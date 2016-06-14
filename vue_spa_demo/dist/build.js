@@ -62,11 +62,11 @@
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _list = __webpack_require__(8);
+	var _list = __webpack_require__(15);
 
 	var _list2 = _interopRequireDefault(_list);
 
-	var _detail = __webpack_require__(10);
+	var _detail = __webpack_require__(22);
 
 	var _detail2 = _interopRequireDefault(_detail);
 
@@ -79,9 +79,7 @@
 
 	var app = _vue2.default.extend(_app2.default);
 
-	var router = new _vueRouter2.default({
-	  hashbang: true //开启hash路由
-	});
+	var router = new _vueRouter2.default();
 
 	//配置路由
 	router.map({
@@ -89,10 +87,10 @@
 	    component: _home2.default
 	  },
 	  '/list': {
-	    components: _list2.default
+	    component: _list2.default
 	  },
 	  '/detail': {
-	    components: _detail2.default
+	    component: _detail2.default
 	  }
 	});
 	//设置默认情况下打开的页面
@@ -12980,14 +12978,19 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<router-view\n  keep-alive\n  transition\n  transition-mode='out-in'></router-view>\n";
+	module.exports = "\n<div class=\"main\">\n\t<router-view\n      keep-alive\n      transition=\"fade\"\n      transition-mode='out-in'></router-view>\n</div>\n";
 
 /***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(7)
+	__vue_script__ = __webpack_require__(7)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\home.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(14)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -13007,16 +13010,224 @@
 
 /***/ },
 /* 7 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div class='home'>2222</div>\n";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _tab_ = __webpack_require__(8);
+
+	var _tab_2 = _interopRequireDefault(_tab_);
+
+	var _tab_3 = __webpack_require__(11);
+
+	var _tab_4 = _interopRequireDefault(_tab_3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	// <div class="home">
+	//     <div class="bd" style="height: 100%;">
+	//         <div class="weui_tab">
+	//             <ul class="weui_navbar">
+	//                 <li class="weui_navbar_item"                   
+	//                     v-for="tab in tabs"
+	//                     :class="{'weui_bar_item_on':$index===selected}"
+	//                     @click="choose($index)">{{tab.tabName}}</li>
+	//             </ul>
+	//             <div class="weui_tab_bd">
+	//                 <component :is="currentView" transition="fade" transition-mode="out-in"></component>
+	//             </div>
+	//         </div>
+	//     </div>     
+	// </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            tabs: [{ tabName: 'Vuejs' }, { tabName: 'VueTab' }],
+	            selected: 0,
+	            currentView: 'view_0'
+	        };
+	    },
+
+	    components: {
+	        'view_0': _tab_2.default,
+	        'view_1': _tab_4.default
+	    },
+	    methods: {
+	        choose: function choose(index) {
+	            this.selected = index;
+	            this.currentView = 'view_' + index;
+	        }
+	    }
+	};
+	// </script>
 
 /***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(9)
+	__vue_script__ = __webpack_require__(9)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\tab\\tab_1.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(10)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./tab_1.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	// <div class="tab_1">
+	//     <div class="weui_panel weui_panel_access weui_cells_access">
+	//         <div class="weui_panel_bd">
+	//             <a v-for="item_one in items_one" v-link="{path:'/list' , activeClass:'active'}" class="weui_media_box weui_media_appmsg weui_cells_access">
+	//                 <div class="weui_media_hd">
+	//                     <img class="weui_media_appmsg_thumb" :src="item_one.src" alt="图片">
+	//                 </div>
+	//                 <div class="weui_media_bd">
+	//                     <h4 class="weui_media_title">{{item_one.title}}</h4>
+	//                     <p class="weui_media_desc">{{item_one.content}}</p>
+	//                 </div>
+	//                 <span class="weui_cell_ft"></span>
+	//             </a>
+	//         </div>
+	//     </div>
+	// </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            items_one: [{ title: 'Vuejs', src: './static/logo.png', content: 'XX数量（9）' }, { title: 'Angularjs', src: './static/logo.png', content: 'XX数量（6）' }]
+	        };
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<div class=\"tab_1\">\r\n    <div class=\"weui_panel weui_panel_access weui_cells_access\">\r\n        <div class=\"weui_panel_bd\">\r\n            <a v-for=\"item_one in items_one\" v-link=\"{path:'/list' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\">\r\n                <div class=\"weui_media_hd\">\r\n                    <img class=\"weui_media_appmsg_thumb\" :src=\"item_one.src\" alt=\"图片\">\r\n                </div>\r\n                <div class=\"weui_media_bd\">\r\n                    <h4 class=\"weui_media_title\">{{item_one.title}}</h4>\r\n                    <p class=\"weui_media_desc\">{{item_one.content}}</p>\r\n                </div>\r\n                <span class=\"weui_cell_ft\"></span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(12)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\tab\\tab_2.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(13)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./tab_2.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	// <div class="tab_1">
+	//     <div class="weui_panel_access">
+	//         <div class="weui_panel_bd">
+	//             <a v-for="item_two in items_two" v-link="{path:'/list' , activeClass:'active'}" class="weui_media_box weui_media_appmsg weui_cells_access">
+	//                 <div class="weui_media_hd">
+	//                     <img class="weui_media_appmsg_thumb" :src="item_two.src" alt="图片">
+	//                 </div>
+	//                 <div class="weui_media_bd">
+	//                     <h4 class="weui_media_title">{{item_two.title}}</h4>
+	//                     <p class="weui_media_desc">{{item_two.content}}</p>
+	//                 </div>
+	//                 <span class="weui_cell_ft"></span>
+	//             </a>
+	//         </div>
+	//     </div>
+	// </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            items_two: [{ title: 'VueRouter', src: './static/designer.jpg', content: 'XX数量（9）' }]
+	        };
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<div class=\"tab_1\">\r\n    <div class=\"weui_panel_access\">\r\n        <div class=\"weui_panel_bd\">\r\n            <a v-for=\"item_two in items_two\" v-link=\"{path:'/list' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\">\r\n                <div class=\"weui_media_hd\">\r\n                    <img class=\"weui_media_appmsg_thumb\" :src=\"item_two.src\" alt=\"图片\">\r\n                </div>\r\n                <div class=\"weui_media_bd\">\r\n                    <h4 class=\"weui_media_title\">{{item_two.title}}</h4>\r\n                    <p class=\"weui_media_desc\">{{item_two.content}}</p>\r\n                </div>\r\n                <span class=\"weui_cell_ft\"></span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<div class=\"home\">\r\n    <div class=\"bd\" style=\"height: 100%;\">\r\n        <div class=\"weui_tab\">\r\n            <ul class=\"weui_navbar\">\r\n                <li class=\"weui_navbar_item\"                    \r\n                    v-for=\"tab in tabs\"\r\n                    :class=\"{'weui_bar_item_on':$index===selected}\"\r\n                    @click=\"choose($index)\">{{tab.tabName}}</li>\r\n            </ul>\r\n            <div class=\"weui_tab_bd\">\r\n                <component :is=\"currentView\" transition=\"fade\" transition-mode=\"out-in\"></component>\r\n            </div>\r\n        </div>\r\n    </div>      \r\n</div>\r\n";
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(16)
+	__vue_script__ = __webpack_require__(20)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\list.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(21)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -13035,17 +13246,386 @@
 	})()}
 
 /***/ },
-/* 9 */
-/***/ function(module, exports) {
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div class='list'>123123</div>\n";
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(17);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(19)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./list.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./list.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 10 */
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(18)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	// <div class="list">
+	//     <div class="hd">
+	//         <h1 class="page_title">Vue</h1>
+	//         <p class="page_desc">Vuejs+webpack实现</p>
+	//     </div>
+	//     <div class="weui_panel weui_panel_access weui_cells_access">
+	//         <div class="weui_panel_bd">
+	//             <a v-for="list_item in list_items" v-link="{path:'/detail' , activeClass:'active'}" class="weui_media_box weui_media_appmsg weui_cells_access">
+	//                 <div class="weui_media_hd">
+	//                     <img class="weui_media_appmsg_thumb" :src="list_item.src" alt="图片">
+	//                 </div>
+	//                 <div class="weui_media_bd">
+	//                     <h4 class="weui_media_title">{{list_item.title}}</h4>
+	//                     <p class="weui_media_desc">{{list_item.number}}</p>
+	//                     <p class="weui_media_desc">{{list_item.check}}</p>
+	//                 </div>
+	//                 <span class="weui_cell_ft">{{list_item.content}}</span>
+	//             </a>
+	//         </div>
+	//     </div>
+	// </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            'list_items': [{ 'title': 'Vue', 'src': './static/logo.png', 'number': 'XX数量（9）', 'check': '过期', 'content': '单页' }, { title: 'Angular', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'React', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'Gulp', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'Webpack', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'ES6', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'ES6', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'ES6', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'ES6', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }]
+	        };
+	    }
+	};
+	// </script>
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<div class=\"list\">\r\n    <div class=\"hd\">\r\n        <h1 class=\"page_title\">Vue</h1>\r\n        <p class=\"page_desc\">Vuejs+webpack实现</p>\r\n    </div>\r\n    <div class=\"weui_panel weui_panel_access weui_cells_access\">\r\n        <div class=\"weui_panel_bd\">\r\n            <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\">\r\n                <div class=\"weui_media_hd\">\r\n                    <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\">\r\n                </div>\r\n                <div class=\"weui_media_bd\">\r\n                    <h4 class=\"weui_media_title\">{{list_item.title}}</h4>\r\n                    <p class=\"weui_media_desc\">{{list_item.number}}</p>\r\n                    <p class=\"weui_media_desc\">{{list_item.check}}</p>\r\n                </div>\r\n                <span class=\"weui_cell_ft\">{{list_item.content}}</span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+
+/***/ },
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(11)
+	__webpack_require__(23)
+	__vue_script__ = __webpack_require__(25)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\detail.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(29)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -13064,10 +13644,241 @@
 	})()}
 
 /***/ },
-/* 11 */
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(24);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(19)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1a580582&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./detail.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1a580582&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./detail.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(18)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-1a580582]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _communication = __webpack_require__(26);
+
+	var _communication2 = _interopRequireDefault(_communication);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	    data: function data() {
+	        return {
+	            transmit_data: '试着改变文字',
+	            transmit_sync_data: '实现父子组件双向数据通信',
+	            give_child_msg: '点击后下面按钮被传递给子组件'
+	        };
+	    },
+
+	    components: {
+	        'detail-child': _communication2.default
+	    },
+	    methods: {
+	        paraToChild: function paraToChild() {
+	            this.$broadcast('parent-mg', this.give_child_msg);
+	        }
+	    }
+	};
+	// </script>
+	// <style scoped>
+	//     .line{
+	//         text-align: center;
+	//         margin: 20px 0;
+	//         color: #0BB20C;
+	//     }
+	// </style>
+	// <template>
+	//     <div class='detail'>
+	//         <div class="hd">
+	//             <h1 class="page_title">通信</h1>
+	//             <p class="page_desc">父子组件之间通信演示</p>
+	//         </div>
+	//         <div class="bd">
+	//             <div class="weui_cells_title">父子组件单向通信---父组件1</div>
+	//             <div class="weui_cells">
+	//                 <div class="weui_cell">
+	//                     <div class="weui_cell_hd"><label class="weui_label">输入文字</label></div>
+	//                     <div class="weui_cell_bd weui_cell_primary">
+	//                         <input class="weui_input" v-model="transmit_data" type="text" placeholder="这里的文字改变子组件文字"/>
+	//                     </div>
+	//                 </div>
+	//             </div>
+	//             <div class="weui_cells_title">父子组件双向通信---父组件2</div>
+	//             <div class="weui_cells">
+	//                 <div class="weui_cell">
+	//                     <div class="weui_cell_hd"><label class="weui_label">输入文字</label></div>
+	//                     <div class="weui_cell_bd weui_cell_primary">
+	//                         <input class="weui_input" v-model="transmit_sync_data" type="text" placeholder="这里的文字改变是双向的改变"/>
+	//                     </div>
+	//                 </div>
+	//                 <div class="weui_cell">
+	//                     <div class="weui_cell_bd weui_cell_primary">
+	//                         <p>变化的文字</p>
+	//                     </div>
+	//                     <div class="weui_cell_ft">{{transmit_sync_data}}</div>
+	//                 </div>
+	//             </div>
+	//             <div class="weui_cells_title">父子组件双向通信---父组件3</div>
+	//             <div class="weui_cells">
+	//                 <div class="weui_cell">
+	//                     <div class="weui_cell_bd weui_cell_primary">
+	//                         <p>要传递的文字</p>
+	//                     </div>
+	//                     <div class="weui_cell_ft">{{give_child_msg}}</div>
+	//                 </div>
+	//             </div>
+	//             <div class="weui_btn_area">
+	//                 <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips" @click="paraToChild()">点击后给子组件3传递数据</a>
+	//             </div>
+	//             <div class="line">------------------------父子组件分割线------------------------</div>
+	//             <detail-child
+	//                 :propsdata="transmit_data"
+	//                 :propsdata_sync.sync="transmit_sync_data"></detail-child>
+	//         </div>
+	//     </div>
+	// </template>
+	// <script>
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(27)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\communication.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(28)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./communication.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 27 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class='detail'>55555</div>\n";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="communication">
+	//         <div class="weui_cells_title">父子组件单向通信---子组件1</div>
+	//         <div class="weui_cells">
+	//             <div class="weui_cell">
+	//                 <div class="weui_cell_bd weui_cell_primary">
+	//                     <p>变化的文字</p>
+	//                 </div>
+	//                 <div class="weui_cell_ft">{{propsdata}}</div>
+	//             </div>
+	//         </div>
+	//         <div class="weui_cells_title">父子组件双向通信---子组件2</div>
+	//         <div class="weui_cells">
+	//             <div class="weui_cell">
+	//                 <div class="weui_cell_hd"><label class="weui_label">输入文字</label></div>
+	//                 <div class="weui_cell_bd weui_cell_primary">
+	//                     <input class="weui_input" v-model="propsdata_sync" type="text" placeholder="这里的文字改变是双向的改变"/>
+	//                 </div>
+	//             </div>
+	//             <div class="weui_cell">
+	//                 <div class="weui_cell_bd weui_cell_primary">
+	//                     <p>变化的文字</p>
+	//                 </div>
+	//                 <div class="weui_cell_ft">{{propsdata_sync}}</div>
+	//             </div>
+	//         </div>
+	//         <div class="weui_cells_title">父子组件双向通信---子组件3</div>
+	//         <div class="weui_cells">
+	//             <div class="weui_cell">
+	//                 <div class="weui_cell_bd weui_cell_primary">
+	//                     <p>变化的文字</p>
+	//                 </div>
+	//                 <div class="weui_cell_ft">{{give_child_msg}}</div>
+	//             </div>
+	//         </div>
+	//     </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            give_child_msg: '点击按钮后我会变'
+	        };
+	    },
+
+	    props: ['propsdata', 'propsdata_sync'],
+	    events: {
+	        'parent-mg': function parentMg(msg) {
+	            this.give_child_msg = msg;
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"communication\">\n    <div class=\"weui_cells_title\">父子组件单向通信---子组件1</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{propsdata}}</div>\n        </div>\n    </div>\n    <div class=\"weui_cells_title\">父子组件双向通信---子组件2</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_hd\"><label class=\"weui_label\">输入文字</label></div>\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <input class=\"weui_input\" v-model=\"propsdata_sync\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\"/>\n            </div>\n        </div>\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{propsdata_sync}}</div>\n        </div>\n    </div>\n    <div class=\"weui_cells_title\">父子组件双向通信---子组件3</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{give_child_msg}}</div>\n        </div>\n    </div>\n</div>\n";
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"detail\" _v-1a580582=\"\">\n    <div class=\"hd\" _v-1a580582=\"\">\n        <h1 class=\"page_title\" _v-1a580582=\"\">通信</h1>\n        <p class=\"page_desc\" _v-1a580582=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-1a580582=\"\">\n        <div class=\"weui_cells_title\" _v-1a580582=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-1a580582=\"\">\n            <div class=\"weui_cell\" _v-1a580582=\"\">\n                <div class=\"weui_cell_hd\" _v-1a580582=\"\"><label class=\"weui_label\" _v-1a580582=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-1a580582=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-1a580582=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-1a580582=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-1a580582=\"\">\n            <div class=\"weui_cell\" _v-1a580582=\"\">\n                <div class=\"weui_cell_hd\" _v-1a580582=\"\"><label class=\"weui_label\" _v-1a580582=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-1a580582=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-1a580582=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-1a580582=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-1a580582=\"\">\n                    <p _v-1a580582=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-1a580582=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-1a580582=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-1a580582=\"\">\n            <div class=\"weui_cell\" _v-1a580582=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-1a580582=\"\">\n                    <p _v-1a580582=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-1a580582=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-1a580582=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild()\" _v-1a580582=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-1a580582=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_sync.sync=\"transmit_sync_data\" _v-1a580582=\"\"></detail-child>\n    </div>\n</div>\n";
 
 /***/ }
 /******/ ]);

@@ -4,7 +4,7 @@
         <h1 class="page_title">Vue</h1>
         <p class="page_desc">Vuejs+webpack实现</p>
     </div>
-    <div class="weui_panel_access">
+    <div class="weui_panel weui_panel_access weui_cells_access">
         <div class="weui_panel_bd">
             <a v-for="list_item in list_items" v-link="{path:'/detail' , activeClass:'active'}" class="weui_media_box weui_media_appmsg weui_cells_access">
                 <div class="weui_media_hd">

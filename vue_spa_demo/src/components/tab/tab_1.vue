@@ -1,6 +1,6 @@
 <template>
 <div class="tab_1">
-    <div class="weui_panel_access">
+    <div class="weui_panel weui_panel_access weui_cells_access">
         <div class="weui_panel_bd">
             <a v-for="item_one in items_one" v-link="{path:'/list' , activeClass:'active'}" class="weui_media_box weui_media_appmsg weui_cells_access">
                 <div class="weui_media_hd">
