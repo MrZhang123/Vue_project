@@ -70,12 +70,24 @@
 
 	var _detail2 = _interopRequireDefault(_detail);
 
+	var _com_demo = __webpack_require__(25);
+
+	var _com_demo2 = _interopRequireDefault(_com_demo);
+
+	var _form = __webpack_require__(33);
+
+	var _form2 = _interopRequireDefault(_form);
+
+	var _dataBind = __webpack_require__(35);
+
+	var _dataBind2 = _interopRequireDefault(_dataBind);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	_vue2.default.use(_vueRouter2.default);
 
 	//引入组件
 
-
-	_vue2.default.use(_vueRouter2.default);
 
 	var app = _vue2.default.extend(_app2.default);
 
@@ -91,6 +103,15 @@
 	  },
 	  '/detail': {
 	    component: _detail2.default
+	  },
+	  '/comDemo': {
+	    component: _com_demo2.default
+	  },
+	  '/form': {
+	    component: _form2.default
+	  },
+	  '/dataBind': {
+	    component: _dataBind2.default
 	  }
 	});
 	//设置默认情况下打开的页面
@@ -13179,7 +13200,7 @@
 	// <template>
 	// <div class="tab_1">
 	//     <div class="weui_panel_access">
-	//         <div class="weui_panel_bd">
+	//         <div class="weui_panel weui_panel_access weui_cells_access">
 	//             <a v-for="item_two in items_two" v-link="{path:'/list' , activeClass:'active'}" class="weui_media_box weui_media_appmsg weui_cells_access">
 	//                 <div class="weui_media_hd">
 	//                     <img class="weui_media_appmsg_thumb" :src="item_two.src" alt="图片">
@@ -13208,7 +13229,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<div class=\"tab_1\">\r\n    <div class=\"weui_panel_access\">\r\n        <div class=\"weui_panel_bd\">\r\n            <a v-for=\"item_two in items_two\" v-link=\"{path:'/list' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\">\r\n                <div class=\"weui_media_hd\">\r\n                    <img class=\"weui_media_appmsg_thumb\" :src=\"item_two.src\" alt=\"图片\">\r\n                </div>\r\n                <div class=\"weui_media_bd\">\r\n                    <h4 class=\"weui_media_title\">{{item_two.title}}</h4>\r\n                    <p class=\"weui_media_desc\">{{item_two.content}}</p>\r\n                </div>\r\n                <span class=\"weui_cell_ft\"></span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "\r\n<div class=\"tab_1\">\r\n    <div class=\"weui_panel_access\">\r\n        <div class=\"weui_panel weui_panel_access weui_cells_access\">\r\n            <a v-for=\"item_two in items_two\" v-link=\"{path:'/list' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\">\r\n                <div class=\"weui_media_hd\">\r\n                    <img class=\"weui_media_appmsg_thumb\" :src=\"item_two.src\" alt=\"图片\">\r\n                </div>\r\n                <div class=\"weui_media_bd\">\r\n                    <h4 class=\"weui_media_title\">{{item_two.title}}</h4>\r\n                    <p class=\"weui_media_desc\">{{item_two.content}}</p>\r\n                </div>\r\n                <span class=\"weui_cell_ft\"></span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
 /* 14 */
@@ -13261,8 +13282,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./list.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./list.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5968bce2&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./list.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5968bce2&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./list.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -13280,7 +13301,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -13578,19 +13599,33 @@
 	//         <h1 class="page_title">Vue</h1>
 	//         <p class="page_desc">Vuejs+webpack实现</p>
 	//     </div>
-	//     <div class="weui_panel weui_panel_access weui_cells_access">
-	//         <div class="weui_panel_bd">
-	//             <a v-for="list_item in list_items" v-link="{path:'/detail' , activeClass:'active'}" class="weui_media_box weui_media_appmsg weui_cells_access">
-	//                 <div class="weui_media_hd">
-	//                     <img class="weui_media_appmsg_thumb" :src="list_item.src" alt="图片">
-	//                 </div>
-	//                 <div class="weui_media_bd">
-	//                     <h4 class="weui_media_title">{{list_item.title}}</h4>
-	//                     <p class="weui_media_desc">{{list_item.number}}</p>
-	//                     <p class="weui_media_desc">{{list_item.check}}</p>
-	//                 </div>
-	//                 <span class="weui_cell_ft">{{list_item.content}}</span>
+	//     <div class="bd">
+	//         <div class="weui_cells_title">Demo</div>
+	//         <div class="weui_cells weui_cells_access">
+	//             <a class="weui_cell" v-link="{path:'/comDemo' , activeClass:'active'}">
+	//                 <span class="weui_cell_bd weui_cell_primary">组件通信</span>
+	//                 <span class="weui_cell_ft"></span>
 	//             </a>
+	//             <a class="weui_cell" v-link="{path:'/dataBind' , activeClass:'active'}">
+	//                 <span class="weui_cell_bd weui_cell_primary">双向数据绑定</span>
+	//                 <span class="weui_cell_ft"></span>
+	//             </a>
+	//         </div>
+	//         <div class="weui_cells_title">详情页</div>
+	//         <div class="weui_panel weui_panel_access weui_cells_access">
+	//             <div class="weui_panel_bd">
+	//                 <a v-for="list_item in list_items" v-link="{path:'/detail' , activeClass:'active'}" class="weui_media_box weui_media_appmsg weui_cells_access">
+	//                     <div class="weui_media_hd">
+	//                         <img class="weui_media_appmsg_thumb" :src="list_item.src" alt="图片">
+	//                     </div>
+	//                     <div class="weui_media_bd">
+	//                         <h4 class="weui_media_title">{{list_item.title}}</h4>
+	//                         <p class="weui_media_desc">{{list_item.number}}</p>
+	//                         <p class="weui_media_desc">{{list_item.check}}</p>
+	//                     </div>
+	//                     <span class="weui_cell_ft">{{list_item.content}}</span>
+	//                 </a>
+	//             </div>
 	//         </div>
 	//     </div>
 	// </div>
@@ -13599,33 +13634,35 @@
 	exports.default = {
 	    data: function data() {
 	        return {
-	            'list_items': [{ 'title': 'Vue', 'src': './static/logo.png', 'number': 'XX数量（9）', 'check': '过期', 'content': '单页' }, { title: 'Angular', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'React', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'Gulp', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'Webpack', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'ES6', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'ES6', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'ES6', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }, { title: 'ES6', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }]
+	            'list_items': [{ title: 'Vue', src: './static/logo.png', number: 'XX数量（9）', check: '过期', content: '单页' }, { title: 'Angular', src: './static/logo.png', number: 'XX数量（6）', check: '过期', content: '单页' }]
 	        };
 	    }
 	};
 	// </script>
-	// <style>
-	//
+	// <style scoped>
+	// .weui_cells_access{
+	//     margin:0;
+	//     border-top:0;
+	// }
 	// </style>
 
 /***/ },
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<div class=\"list\">\r\n    <div class=\"hd\">\r\n        <h1 class=\"page_title\">Vue</h1>\r\n        <p class=\"page_desc\">Vuejs+webpack实现</p>\r\n    </div>\r\n    <div class=\"weui_panel weui_panel_access weui_cells_access\">\r\n        <div class=\"weui_panel_bd\">\r\n            <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\">\r\n                <div class=\"weui_media_hd\">\r\n                    <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\">\r\n                </div>\r\n                <div class=\"weui_media_bd\">\r\n                    <h4 class=\"weui_media_title\">{{list_item.title}}</h4>\r\n                    <p class=\"weui_media_desc\">{{list_item.number}}</p>\r\n                    <p class=\"weui_media_desc\">{{list_item.check}}</p>\r\n                </div>\r\n                <span class=\"weui_cell_ft\">{{list_item.content}}</span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vuejs+webpack实现</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(23)
-	__vue_script__ = __webpack_require__(25)
+	__vue_script__ = __webpack_require__(23)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\detail.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(29)
+	__vue_template__ = __webpack_require__(24)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -13645,12 +13682,108 @@
 
 /***/ },
 /* 23 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="detail">
+	//         <div class="hd">
+	//             <h1 class="page_title" v-if="Math.random()>0.5">详情</h1>
+	//             <h1 class="page_title" v-else>不知道写啥</h1>
+	//         </div>
+	//         <div class="bd">
+	//             <div class="weui_panel weui_panel_access">
+	//                 <div class="weui_panel_bd">
+	//                     <div class="weui_cell">
+	//                         <div class="weui_cell_bd weui_cell_primary" v-if="Math.random()>0.5">赵雷</div>
+	//                         <div class="weui_cell_bd weui_cell_primary" v-else>李志</div>
+	//
+	//                         <div class="weui_cell_ft">{{first}}</div>
+	//                     </div>
+	//
+	//                     <div class="weui_cell">
+	//                         <div class="weui_cell_bd weui_cell_primary">楼上会变</div>
+	//                         <div class="weui_cell_ft">{{secound}}</div>
+	//                     </div>
+	//
+	//                 </div>
+	//             </div>
+	//             <div class="weui_btn_area">
+	//                 <a class="weui_btn weui_btn_primary" id="showTooltips" v-link="{path:'/form',activeClass:''}">点击跳转</a>
+	//             </div>
+	//         </div>
+	//     </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            first: '梵高先生',
+	            secound: '啊偶'
+	        };
+	    },
+
+	    computed: {
+	        /*这样就可以实现多个条件下显示不同的文字*/
+
+	        first: function first() {
+	            if (Math.random() > 0.5) {
+	                return '梵高先生';
+	            } else {
+	                return '返回某个';
+	            }
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"detail\">\n    <div class=\"hd\">\n        <h1 class=\"page_title\" v-if=\"Math.random()>0.5\">详情</h1>\n        <h1 class=\"page_title\" v-else>不知道写啥</h1>\n    </div>\n    <div class=\"bd\">\n        <div class=\"weui_panel weui_panel_access\">\n            <div class=\"weui_panel_bd\">\n                <div class=\"weui_cell\">\n                    <div class=\"weui_cell_bd weui_cell_primary\" v-if=\"Math.random()>0.5\">赵雷</div>\n                    <div class=\"weui_cell_bd weui_cell_primary\" v-else>李志</div>\n\n                    <div class=\"weui_cell_ft\">{{first}}</div>\n                </div>\n\n                <div class=\"weui_cell\">\n                    <div class=\"weui_cell_bd weui_cell_primary\">楼上会变</div>\n                    <div class=\"weui_cell_ft\">{{secound}}</div>\n                </div>\n\n            </div>\n        </div>\n        <div class=\"weui_btn_area\">\n            <a class=\"weui_btn weui_btn_primary\" id=\"showTooltips\" v-link=\"{path:'/form',activeClass:''}\">点击跳转</a>\n        </div>\n    </div>\n</div>\n";
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(26)
+	__vue_script__ = __webpack_require__(28)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\com_demo.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(32)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./com_demo.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(24);
+	var content = __webpack_require__(27);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(19)(content, {});
@@ -13659,8 +13792,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1a580582&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./detail.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1a580582&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./detail.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6f277e5c&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./com_demo.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6f277e5c&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./com_demo.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -13670,7 +13803,7 @@
 	}
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(18)();
@@ -13678,13 +13811,13 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-1a580582]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-6f277e5c]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13693,7 +13826,7 @@
 	    value: true
 	});
 
-	var _communication = __webpack_require__(26);
+	var _communication = __webpack_require__(29);
 
 	var _communication2 = _interopRequireDefault(_communication);
 
@@ -13726,7 +13859,7 @@
 	//     }
 	// </style>
 	// <template>
-	//     <div class='detail'>
+	//     <div class='com_demo'>
 	//         <div class="hd">
 	//             <h1 class="page_title">通信</h1>
 	//             <p class="page_desc">父子组件之间通信演示</p>
@@ -13778,16 +13911,16 @@
 	// <script>
 
 /***/ },
-/* 26 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(27)
+	__vue_script__ = __webpack_require__(30)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\communication.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(28)
+	__vue_template__ = __webpack_require__(31)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -13806,7 +13939,7 @@
 	})()}
 
 /***/ },
-/* 27 */
+/* 30 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -13869,16 +14002,216 @@
 	// </script>
 
 /***/ },
-/* 28 */
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"communication\">\n    <div class=\"weui_cells_title\">父子组件单向通信---子组件1</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{propsdata}}</div>\n        </div>\n    </div>\n    <div class=\"weui_cells_title\">父子组件双向通信---子组件2</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_hd\"><label class=\"weui_label\">输入文字</label></div>\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <input class=\"weui_input\" v-model=\"propsdata_sync\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\"/>\n            </div>\n        </div>\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{propsdata_sync}}</div>\n        </div>\n    </div>\n    <div class=\"weui_cells_title\">父子组件双向通信---子组件3</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{give_child_msg}}</div>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
-/* 29 */
+/* 32 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"detail\" _v-1a580582=\"\">\n    <div class=\"hd\" _v-1a580582=\"\">\n        <h1 class=\"page_title\" _v-1a580582=\"\">通信</h1>\n        <p class=\"page_desc\" _v-1a580582=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-1a580582=\"\">\n        <div class=\"weui_cells_title\" _v-1a580582=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-1a580582=\"\">\n            <div class=\"weui_cell\" _v-1a580582=\"\">\n                <div class=\"weui_cell_hd\" _v-1a580582=\"\"><label class=\"weui_label\" _v-1a580582=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-1a580582=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-1a580582=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-1a580582=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-1a580582=\"\">\n            <div class=\"weui_cell\" _v-1a580582=\"\">\n                <div class=\"weui_cell_hd\" _v-1a580582=\"\"><label class=\"weui_label\" _v-1a580582=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-1a580582=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-1a580582=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-1a580582=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-1a580582=\"\">\n                    <p _v-1a580582=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-1a580582=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-1a580582=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-1a580582=\"\">\n            <div class=\"weui_cell\" _v-1a580582=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-1a580582=\"\">\n                    <p _v-1a580582=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-1a580582=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-1a580582=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild()\" _v-1a580582=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-1a580582=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_sync.sync=\"transmit_sync_data\" _v-1a580582=\"\"></detail-child>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"com_demo\" _v-6f277e5c=\"\">\n    <div class=\"hd\" _v-6f277e5c=\"\">\n        <h1 class=\"page_title\" _v-6f277e5c=\"\">通信</h1>\n        <p class=\"page_desc\" _v-6f277e5c=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-6f277e5c=\"\">\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-6f277e5c=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild()\" _v-6f277e5c=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-6f277e5c=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_sync.sync=\"transmit_sync_data\" _v-6f277e5c=\"\"></detail-child>\n    </div>\n</div>\n";
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(34)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./form.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"form\">\n    aaaaaa\n</div>\n";
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(36)
+	__vue_script__ = __webpack_require__(38)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(39)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./dataBind.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(37);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(19)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(18)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.dataBind[_v-ea1c3a10]{\r\n    padding:20px;\r\n}\r\n.top[_v-ea1c3a10]{\r\n    width:100%;\r\n    height:auto;\r\n    margin-top: 40px;\r\n}\r\n.item[_v-ea1c3a10]{\r\n    display: inline-block;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    border: 1px solid #000;\r\n    margin-right: 30px;\r\n    margin-bottom: 20px;\r\n}\r\n.item .remove[_v-ea1c3a10]{\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n.item .remove[_v-ea1c3a10]:hover{\r\n    color: red;\r\n}\r\n.check[_v-ea1c3a10]{\r\n    margin-top: 10px;\r\n}\r\ninput[_v-ea1c3a10]{\r\n    outline: none;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="dataBind">
+	//         <div class="hd">
+	//             <h1 class="page_title">Vue</h1>
+	//             <p class="page_desc">利用双向数据绑定实现</p>
+	//         </div>
+	//         <div>说明：点击下面的选项会出现上面相应的块儿，如果点击上面块儿中的‘X’则可以关闭</div>
+	//         <div class="top">
+	//             <span class="item" v-for="item in items">{{item.place}}<span class="remove" @click.stop="removeFun($index)">X</span></span>
+	//         </div>
+	//         <div class="check">
+	//             <span class="check_item" v-for="checkbox in checkboxes" >
+	//                 <input class="checkbox_input" type="checkbox" :id="checkbox.id" v-model="selected[$index]" @click.stop="addFun($index)"><label :for="checkbox.id">{{checkbox.place}}</label>
+	//             </span>
+	//         </div>
+	//     </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            items: [],
+	            selected: [],
+	            checkboxes: [{ id: 'check_input_1', place: '安徽' }, { id: 'check_input_2', place: '全椒县' }, { id: 'check_input_3', place: '南京' }, { id: 'check_input_4', place: '热河路' }, { id: 'check_input_5', place: '郑州' }]
+	        };
+	    },
+
+	    methods: {
+	        addFun: function addFun(bottomIndex) {
+	            if (!this.selected[bottomIndex]) {
+	                this.items.push({ place: this.checkboxes[bottomIndex].place });
+	            } else {
+	                var nowPlace = this.checkboxes[bottomIndex].place;
+	                var items = this.items;
+	                for (var i = 0; i < items.length; i++) {
+	                    if (items[i].place === nowPlace) {
+	                        items.splice(i, 1);
+	                    }
+	                }
+	            }
+	        },
+	        removeFun: function removeFun(topIndex) {
+	            var nowItem = this.items[topIndex].place;
+	            var checkboxes = this.checkboxes;
+	            var selected = this.selected;
+	            this.items.splice(topIndex, 1);
+	            for (var i = 0; i < checkboxes.length; i++) {
+	                if (checkboxes[i].place === nowItem) {
+	                    selected.$set(i, false);
+	                }
+	            }
+	        }
+	    }
+	};
+	// </script>
+	// <style scoped>
+	// .dataBind{
+	//     padding:20px;
+	// }
+	// .top{
+	//     width:100%;
+	//     height:auto;
+	//     margin-top: 40px;
+	// }
+	// .item{
+	//     display: inline-block;
+	//     line-height: 30px;
+	//     text-align: center;
+	//     border: 1px solid #000;
+	//     margin-right: 30px;
+	//     margin-bottom: 20px;
+	// }
+	// .item .remove{
+	//     margin-left: 10px;
+	//     cursor: pointer;
+	// }
+	// .item .remove:hover{
+	//     color: red;
+	// }
+	// .check{
+	//     margin-top: 10px;
+	// }
+	// input{
+	//     outline: none;
+	// }
+	// </style>
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"dataBind\" _v-ea1c3a10=\"\">\n    <div class=\"hd\" _v-ea1c3a10=\"\">\n        <h1 class=\"page_title\" _v-ea1c3a10=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-ea1c3a10=\"\">利用双向数据绑定实现</p>\n    </div>\n    <div _v-ea1c3a10=\"\">说明：点击下面的选项会出现上面相应的块儿，如果点击上面块儿中的‘X’则可以关闭</div>\n    <div class=\"top\" _v-ea1c3a10=\"\">\n        <span class=\"item\" v-for=\"item in items\" _v-ea1c3a10=\"\">{{item.place}}<span class=\"remove\" @click.stop=\"removeFun($index)\" _v-ea1c3a10=\"\">X</span></span>\n    </div>\n    <div class=\"check\" _v-ea1c3a10=\"\">\n        <span class=\"check_item\" v-for=\"checkbox in checkboxes\" _v-ea1c3a10=\"\">\n            <input class=\"checkbox_input\" type=\"checkbox\" :id=\"checkbox.id\" v-model=\"selected[$index]\" @click.stop=\"addFun($index)\" _v-ea1c3a10=\"\"><label :for=\"checkbox.id\" _v-ea1c3a10=\"\">{{checkbox.place}}</label>\n        </span>\n    </div>\n</div>\n";
 
 /***/ }
 /******/ ]);
