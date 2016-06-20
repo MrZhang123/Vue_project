@@ -74,20 +74,24 @@
 
 	var _com_demo2 = _interopRequireDefault(_com_demo);
 
-	var _form = __webpack_require__(33);
+	var _condition_router = __webpack_require__(33);
 
-	var _form2 = _interopRequireDefault(_form);
+	var _condition_router2 = _interopRequireDefault(_condition_router);
 
-	var _dataBind = __webpack_require__(35);
+	var _dataBind = __webpack_require__(36);
 
 	var _dataBind2 = _interopRequireDefault(_dataBind);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _form = __webpack_require__(41);
 
-	_vue2.default.use(_vueRouter2.default);
+	var _form2 = _interopRequireDefault(_form);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//引入组件
 
+
+	_vue2.default.use(_vueRouter2.default);
 
 	var app = _vue2.default.extend(_app2.default);
 
@@ -106,6 +110,9 @@
 	  },
 	  '/comDemo': {
 	    component: _com_demo2.default
+	  },
+	  '/conditionRouter': {
+	    component: _condition_router2.default
 	  },
 	  '/form': {
 	    component: _form2.default
@@ -13301,7 +13308,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -13597,7 +13604,7 @@
 	// <div class="list">
 	//     <div class="hd">
 	//         <h1 class="page_title">Vue</h1>
-	//         <p class="page_desc">Vuejs+webpack实现</p>
+	//         <p class="page_desc">Vue的一些demo</p>
 	//     </div>
 	//     <div class="bd">
 	//         <div class="weui_cells_title">Demo</div>
@@ -13608,6 +13615,10 @@
 	//             </a>
 	//             <a class="weui_cell" v-link="{path:'/dataBind' , activeClass:'active'}">
 	//                 <span class="weui_cell_bd weui_cell_primary">双向数据绑定</span>
+	//                 <span class="weui_cell_ft"></span>
+	//             </a>
+	//             <a class="weui_cell" v-link="{path:'/conditionRouter' , activeClass:'active'}">
+	//                 <span class="weui_cell_bd weui_cell_primary">根据条件跳转路由</span>
 	//                 <span class="weui_cell_ft"></span>
 	//             </a>
 	//         </div>
@@ -13650,7 +13661,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vuejs+webpack实现</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vue的一些demo</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/conditionRouter' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">根据条件跳转路由</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -14018,7 +14029,12 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(34)
+	__vue_script__ = __webpack_require__(34)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\condition_router.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(35)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14028,7 +14044,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./form.vue"
+	  var id = "./condition_router.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14040,20 +14056,94 @@
 /* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"form\">\n    aaaaaa\n</div>\n";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="condition_router">
+	//         <div class="hd">
+	//             <h1 class="page_title">Vue</h1>
+	//             <p class="page_desc">根据条件跳转不同路由</p>
+	//         </div>
+	//         <div class="bd">
+	//             <div class="weui_cells weui_cells_form">
+	//                 <div class="weui_cell">
+	//                     <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+	//                     <div class="weui_cell_bd weui_cell_primary">
+	//                         <input class="weui_input" type="text"  placeholder="请输入姓名" v-model="userName"/>
+	//                     </div>
+	//                 </div>
+	//                 <div class="weui_cell">
+	//                     <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+	//                     <div class="weui_cell_bd weui_cell_primary">
+	//                         <input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入手机号" v-model="userPhone"/>
+	//                     </div>
+	//                 </div>
+	//             </div>
+	//             <div class="weui_btn_area">
+	//                 <a class="weui_btn weui_btn_primary" id="showTooltips" @click="linkFun">跳转</a>
+	//             </div>
+	//         </div>
+	//     </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            userName: '',
+	            userPhone: ''
+	        };
+	    },
+
+	    methods: {
+	        linkFun: function linkFun() {
+	            var userName = this.userName.trim();
+	            var userPhone = this.userPhone.trim();
+	            if (userName !== '' && userPhone === '') {
+	                /*这里可以利用router.go根据不同的条件进行不同的跳转*/
+	                /*router.go({
+	                    path:'路径1',
+	                    activeClass:'active'
+	                });*/
+	                alert('Plase write userPhone!');
+	            } else if (userName === '' && userPhone === '') {
+	                /*router.go({
+	                    path:'路径2',
+	                    activeClass:'active'
+	                });*/
+	                alert('Plase write userPhone and userName!');
+	            } else {
+	                /*router.go({
+	                    path:'路径3',
+	                    activeClass:'active'
+	                });*/
+	                alert('Other');
+	            }
+	        }
+	    }
+	};
+	// </script>
 
 /***/ },
 /* 35 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"condition_router\">\n    <div class=\"hd\">\n        <h1 class=\"page_title\">Vue</h1>\n        <p class=\"page_desc\">根据条件跳转不同路由</p>\n    </div>\n    <div class=\"bd\">\n        <div class=\"weui_cells weui_cells_form\">\n            <div class=\"weui_cell\">\n                <div class=\"weui_cell_hd\"><label class=\"weui_label\">姓名</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\">\n                    <input class=\"weui_input\" type=\"text\"  placeholder=\"请输入姓名\" v-model=\"userName\"/>\n                </div>\n            </div>\n            <div class=\"weui_cell\">\n                <div class=\"weui_cell_hd\"><label class=\"weui_label\">手机号</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\">\n                    <input class=\"weui_input\" type=\"number\" pattern=\"[0-9]*\" placeholder=\"请输入手机号\" v-model=\"userPhone\"/>\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\">\n            <a class=\"weui_btn weui_btn_primary\" id=\"showTooltips\" @click=\"linkFun\">跳转</a>\n        </div>\n    </div>\n</div>\n";
+
+/***/ },
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(36)
-	__vue_script__ = __webpack_require__(38)
+	__webpack_require__(37)
+	__vue_script__ = __webpack_require__(39)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(39)
+	__vue_template__ = __webpack_require__(40)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14072,13 +14162,13 @@
 	})()}
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(37);
+	var content = __webpack_require__(38);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(19)(content, {});
@@ -14098,7 +14188,7 @@
 	}
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(18)();
@@ -14112,7 +14202,7 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14208,10 +14298,39 @@
 	// </style>
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"dataBind\" _v-ea1c3a10=\"\">\n    <div class=\"hd\" _v-ea1c3a10=\"\">\n        <h1 class=\"page_title\" _v-ea1c3a10=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-ea1c3a10=\"\">利用双向数据绑定实现</p>\n    </div>\n    <div _v-ea1c3a10=\"\">说明：点击下面的选项会出现上面相应的块儿，如果点击上面块儿中的‘X’则可以关闭</div>\n    <div class=\"top\" _v-ea1c3a10=\"\">\n        <span class=\"item\" v-for=\"item in items\" _v-ea1c3a10=\"\">{{item.place}}<span class=\"remove\" @click.stop=\"removeFun($index)\" _v-ea1c3a10=\"\">X</span></span>\n    </div>\n    <div class=\"check\" _v-ea1c3a10=\"\">\n        <span class=\"check_item\" v-for=\"checkbox in checkboxes\" _v-ea1c3a10=\"\">\n            <input class=\"checkbox_input\" type=\"checkbox\" :id=\"checkbox.id\" v-model=\"selected[$index]\" @click.stop=\"addFun($index)\" _v-ea1c3a10=\"\"><label :for=\"checkbox.id\" _v-ea1c3a10=\"\">{{checkbox.place}}</label>\n        </span>\n    </div>\n</div>\n";
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(42)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./form.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"form\">\n    aaaaaa\n</div>\n";
 
 /***/ }
 /******/ ]);

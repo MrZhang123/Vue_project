@@ -2,7 +2,7 @@
 <div class="list">
     <div class="hd">
         <h1 class="page_title">Vue</h1>
-        <p class="page_desc">Vuejs+webpack实现</p>
+        <p class="page_desc">Vue的一些demo</p>
     </div>
     <div class="bd">
         <div class="weui_cells_title">Demo</div>
@@ -13,6 +13,10 @@
             </a>
             <a class="weui_cell" v-link="{path:'/dataBind' , activeClass:'active'}">
                 <span class="weui_cell_bd weui_cell_primary">双向数据绑定</span>
+                <span class="weui_cell_ft"></span>
+            </a>
+            <a class="weui_cell" v-link="{path:'/conditionRouter' , activeClass:'active'}">
+                <span class="weui_cell_bd weui_cell_primary">根据条件跳转路由</span>
                 <span class="weui_cell_ft"></span>
             </a>
         </div>

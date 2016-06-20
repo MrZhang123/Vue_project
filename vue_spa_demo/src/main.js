@@ -7,8 +7,9 @@ import home from './components/home.vue';
 import list from './components/list.vue';
 import detail from './components/detail.vue';
 import comDemo from './components/com_demo.vue';
-import form from './components/form.vue';
+import conditionRouter from './components/condition_router.vue';
 import dataBind from './components/dataBind.vue';
+import form from './components/form.vue';
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,9 @@ router.map({
   },
   '/comDemo': {
     component: comDemo
+  },
+  '/conditionRouter':{
+    component:  conditionRouter
   },
   '/form':{
     component: form
