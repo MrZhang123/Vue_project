@@ -1,3 +1,4 @@
+<!--父组件-->
 <template>
     <div class='com_demo'>
         <div class="hd">

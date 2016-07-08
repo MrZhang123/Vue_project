@@ -78,11 +78,19 @@
 
 	var _condition_router2 = _interopRequireDefault(_condition_router);
 
-	var _dataBind = __webpack_require__(36);
+	var _wechatImg = __webpack_require__(36);
+
+	var _wechatImg2 = _interopRequireDefault(_wechatImg);
+
+	var _table = __webpack_require__(41);
+
+	var _table2 = _interopRequireDefault(_table);
+
+	var _dataBind = __webpack_require__(46);
 
 	var _dataBind2 = _interopRequireDefault(_dataBind);
 
-	var _form = __webpack_require__(41);
+	var _form = __webpack_require__(51);
 
 	var _form2 = _interopRequireDefault(_form);
 
@@ -113,6 +121,12 @@
 	  },
 	  '/conditionRouter': {
 	    component: _condition_router2.default
+	  },
+	  '/wechatImg': {
+	    component: _wechatImg2.default
+	  },
+	  '/table': {
+	    component: _table2.default
 	  },
 	  '/form': {
 	    component: _form2.default
@@ -13308,7 +13322,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -13621,6 +13635,14 @@
 	//                 <span class="weui_cell_bd weui_cell_primary">根据条件跳转路由</span>
 	//                 <span class="weui_cell_ft"></span>
 	//             </a>
+	//             <a class="weui_cell" v-link="{path:'/wechatImg' , activeClass:'active'}">
+	//                 <span class="weui_cell_bd weui_cell_primary">模仿微信点击图片放大</span>
+	//                 <span class="weui_cell_ft"></span>
+	//             </a>
+	//             <a class="weui_cell" v-link="{path:'/table' , activeClass:'active'}">
+	//                 <span class="weui_cell_bd weui_cell_primary">Vue实现自定义表格</span>
+	//                 <span class="weui_cell_ft"></span>
+	//             </a>
 	//         </div>
 	//         <div class="weui_cells_title">详情页</div>
 	//         <div class="weui_panel weui_panel_access weui_cells_access">
@@ -13661,7 +13683,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vue的一些demo</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/conditionRouter' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">根据条件跳转路由</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vue的一些demo</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/conditionRouter' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">根据条件跳转路由</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/wechatImg' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">模仿微信点击图片放大</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/table' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">Vue实现自定义表格</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -13822,7 +13844,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-6f277e5c]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-6f277e5c]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
 
 	// exports
 
@@ -13869,6 +13891,7 @@
 	//         color: #0BB20C;
 	//     }
 	// </style>
+	// <!--父组件-->
 	// <template>
 	//     <div class='com_demo'>
 	//         <div class="hd">
@@ -13958,6 +13981,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	// <!--子组件-->
 	// <template>
 	//     <div class="communication">
 	//         <div class="weui_cells_title">父子组件单向通信---子组件1</div>
@@ -14016,13 +14040,13 @@
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"communication\">\n    <div class=\"weui_cells_title\">父子组件单向通信---子组件1</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{propsdata}}</div>\n        </div>\n    </div>\n    <div class=\"weui_cells_title\">父子组件双向通信---子组件2</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_hd\"><label class=\"weui_label\">输入文字</label></div>\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <input class=\"weui_input\" v-model=\"propsdata_sync\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\"/>\n            </div>\n        </div>\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{propsdata_sync}}</div>\n        </div>\n    </div>\n    <div class=\"weui_cells_title\">父子组件双向通信---子组件3</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{give_child_msg}}</div>\n        </div>\n    </div>\n</div>\n";
+	module.exports = "\n\n<div class=\"communication\">\n    <div class=\"weui_cells_title\">父子组件单向通信---子组件1</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{propsdata}}</div>\n        </div>\n    </div>\n    <div class=\"weui_cells_title\">父子组件双向通信---子组件2</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_hd\"><label class=\"weui_label\">输入文字</label></div>\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <input class=\"weui_input\" v-model=\"propsdata_sync\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\"/>\n            </div>\n        </div>\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{propsdata_sync}}</div>\n        </div>\n    </div>\n    <div class=\"weui_cells_title\">父子组件双向通信---子组件3</div>\n    <div class=\"weui_cells\">\n        <div class=\"weui_cell\">\n            <div class=\"weui_cell_bd weui_cell_primary\">\n                <p>变化的文字</p>\n            </div>\n            <div class=\"weui_cell_ft\">{{give_child_msg}}</div>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 32 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"com_demo\" _v-6f277e5c=\"\">\n    <div class=\"hd\" _v-6f277e5c=\"\">\n        <h1 class=\"page_title\" _v-6f277e5c=\"\">通信</h1>\n        <p class=\"page_desc\" _v-6f277e5c=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-6f277e5c=\"\">\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-6f277e5c=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild()\" _v-6f277e5c=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-6f277e5c=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_sync.sync=\"transmit_sync_data\" _v-6f277e5c=\"\"></detail-child>\n    </div>\n</div>\n";
+	module.exports = "\n\n<div class=\"com_demo\" _v-6f277e5c=\"\">\n    <div class=\"hd\" _v-6f277e5c=\"\">\n        <h1 class=\"page_title\" _v-6f277e5c=\"\">通信</h1>\n        <p class=\"page_desc\" _v-6f277e5c=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-6f277e5c=\"\">\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-6f277e5c=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild()\" _v-6f277e5c=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-6f277e5c=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_sync.sync=\"transmit_sync_data\" _v-6f277e5c=\"\"></detail-child>\n    </div>\n</div>\n";
 
 /***/ },
 /* 33 */
@@ -14142,7 +14166,7 @@
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
+	  console.warn("[vue-loader] src\\components\\wechatImg.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(40)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -14153,7 +14177,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./dataBind.vue"
+	  var id = "./wechatImg.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14177,8 +14201,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-48aab91c&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./wechatImg.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-48aab91c&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./wechatImg.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -14196,13 +14220,409 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.dataBind[_v-ea1c3a10]{\r\n    padding:20px;\r\n}\r\n.top[_v-ea1c3a10]{\r\n    width:100%;\r\n    height:auto;\r\n    margin-top: 40px;\r\n}\r\n.item[_v-ea1c3a10]{\r\n    display: inline-block;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    border: 1px solid #000;\r\n    margin-right: 30px;\r\n    margin-bottom: 20px;\r\n}\r\n.item .remove[_v-ea1c3a10]{\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n.item .remove[_v-ea1c3a10]:hover{\r\n    color: red;\r\n}\r\n.check[_v-ea1c3a10]{\r\n    margin-top: 10px;\r\n}\r\ninput[_v-ea1c3a10]{\r\n    outline: none;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.small-img[_v-48aab91c]{\n    width:150px;\n    height:auto;\n    cursor: pointer;\n    margin:20px;\n}\n.shadow-box[_v-48aab91c]{\n    width:100%;\n    height:100%;\n    position: fixed;\n    left:0;\n    top:0;\n}\n.shadow[_v-48aab91c]{\n    width:100%;\n    height:100%;\n    background-color: rgba(0,0,0,1);\n}\n/*背景的动画*/\n.fade-transition[_v-48aab91c]{\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    opacity:1;\n}\n.fade-enter[_v-48aab91c], .fade-leave[_v-48aab91c]{\n    opacity:0;\n}\n/*图片的动画*/\n.zoom2-transition[_v-48aab91c],\n.zoom3-transition[_v-48aab91c],\n.zoom-transition[_v-48aab91c]{\n    width:60%;\n    height:auto;\n    position: absolute;\n    left:50%;\n    top:50%;\n    -webkit-transform: translate(-50%,-50%);\n            transform: translate(-50%,-50%);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.zoom-enter[_v-48aab91c], .zoom-leave[_v-48aab91c]{\n    width:150px;\n    height:auto;\n    position: absolute;\n    left:20px;\n    top:20px;\n    -webkit-transform: translate(0,0);\n            transform: translate(0,0);\n}\n.zoom2-enter[_v-48aab91c], .zoom2-leave[_v-48aab91c]{\n    width:150px;\n    height:auto;\n    position: absolute;\n    left:210px;\n    top:20px;\n    -webkit-transform: translate(0,0);\n            transform: translate(0,0);\n}\n.zoom3-enter[_v-48aab91c], .zoom3-leave[_v-48aab91c]{\n    width:150px;\n    height:auto;\n    position: absolute;\n    left:400px;\n    top:26px;\n    -webkit-transform: translate(0,0);\n            transform: translate(0,0);\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 39 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="wechatImg">
+	//         <img
+	//             v-for="img of imgs"
+	//             class="small-img"
+	//             :src="img.src"
+	//             @click="zoomImg($index)"
+	//             alt="img"/>
+	//         <div class="shadow-box" :style="{display:parameter}">
+	//             <div class="shadow"
+	//                  @click="hiddenImg"
+	//                  v-if="show"
+	//                  transition="fade"
+	//             ></div>
+	//             <img class="big-img"
+	//                  :src="imgSrc"
+	//                  v-if="show"
+	//                  :transition="imgZoom"
+	//                  alt="图片">
+	//         </div>
+	//     </div>
+	// </template>
+	// <script>
+	var elements;
+	exports.default = {
+	    ready: function ready() {
+	        elements = document.querySelectorAll('.small-img');
+	    },
+	    data: function data() {
+	        return {
+	            imgs: [{ src: '../../static/click1.jpg' }, { src: '../../static/click2.jpg' }, { src: '../../static/click3.jpg' }],
+	            imgSrc: '../../static/click1.jpg',
+	            show: false,
+	            imgZoom: 'zoom',
+	            parameter: 'none'
+	        };
+	    },
+
+	    methods: {
+	        zoomImg: function zoomImg(index) {
+	            this.show = true;
+	            this.parameter = 'block';
+	            var nowElement = elements[index];
+	            var offsetLeft = nowElement.offsetLeft,
+	                offsetTop = nowElement.offsetTop;
+	            if (index === 0) {
+	                this.imgSrc = '../../static/click1.jpg';
+	                this.imgZoom = 'zoom';
+	            } else if (index === 1) {
+	                this.imgSrc = '../../static/click2.jpg';
+	                this.imgZoom = 'zoom2';
+	            } else {
+	                this.imgSrc = '../../static/click3.jpg';
+	                this.imgZoom = 'zoom3';
+	            }
+	        },
+	        hiddenImg: function hiddenImg() {
+	            var _this = this;
+
+	            this.show = false;
+	            setTimeout(function () {
+	                return _this.parameter = 'none';
+	            }, 300);
+	        }
+	    },
+	    transitions: {
+	        beforeEnter: function beforeEnter() {
+	            alert(1);
+	        },
+	        enter: function enter() {
+	            alert(2);
+	        }
+	    }
+	};
+	// </script>
+	// <style scoped>
+	//     .small-img{
+	//         width:150px;
+	//         height:auto;
+	//         cursor: pointer;
+	//         margin:20px;
+	//     }
+	//     .shadow-box{
+	//         width:100%;
+	//         height:100%;
+	//         position: fixed;
+	//         left:0;
+	//         top:0;
+	//     }
+	//     .shadow{
+	//         width:100%;
+	//         height:100%;
+	//         background-color: rgba(0,0,0,1);
+	//     }
+	//     /*背景的动画*/
+	//     .fade-transition{
+	//         -webkit-transition: all .3s ease;
+	//         transition: all .3s ease;
+	//         opacity:1;
+	//     }
+	//     .fade-enter, .fade-leave{
+	//         opacity:0;
+	//     }
+	//     /*图片的动画*/
+	//     .zoom2-transition,
+	//     .zoom3-transition,
+	//     .zoom-transition{
+	//         width:60%;
+	//         height:auto;
+	//         position: absolute;
+	//         left:50%;
+	//         top:50%;
+	//         transform: translate(-50%,-50%);
+	//         -webkit-transition: all .3s ease;
+	//         transition: all .3s ease;
+	//     }
+	//     .zoom-enter, .zoom-leave{
+	//         width:150px;
+	//         height:auto;
+	//         position: absolute;
+	//         left:20px;
+	//         top:20px;
+	//         transform: translate(0,0);
+	//     }
+	//     .zoom2-enter, .zoom2-leave{
+	//         width:150px;
+	//         height:auto;
+	//         position: absolute;
+	//         left:210px;
+	//         top:20px;
+	//         transform: translate(0,0);
+	//     }
+	//     .zoom3-enter, .zoom3-leave{
+	//         width:150px;
+	//         height:auto;
+	//         position: absolute;
+	//         left:400px;
+	//         top:26px;
+	//         transform: translate(0,0);
+	//     }
+	// </style>
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"wechatImg\" _v-48aab91c=\"\">\n    <img v-for=\"img of imgs\" class=\"small-img\" :src=\"img.src\" @click=\"zoomImg($index)\" alt=\"img\" _v-48aab91c=\"\">\n    <div class=\"shadow-box\" :style=\"{display:parameter}\" _v-48aab91c=\"\">\n        <div class=\"shadow\" @click=\"hiddenImg\" v-if=\"show\" transition=\"fade\" _v-48aab91c=\"\"></div>\n        <img class=\"big-img\" :src=\"imgSrc\" v-if=\"show\" :transition=\"imgZoom\" alt=\"图片\" _v-48aab91c=\"\">\n    </div>\n</div>\n";
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(42)
+	__vue_script__ = __webpack_require__(44)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\table.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(45)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./table.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(43);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(19)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6b38452d&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./table.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6b38452d&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./table.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(18)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntable[_v-6b38452d]{\n    width:80%;\n    height:auto;\n    border-collapse: collapse;\n    margin:30px auto;\n}\n.table tr[_v-6b38452d],\n.table td[_v-6b38452d]{\n    padding:10px 20px;\n    text-align: center;\n    border: 1px solid #000;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="table">
+	//         <div class="hd">
+	//             <h1 class="page_title">Table</h1>
+	//             <p class="page_desc">Vue的Table</p>
+	//         </div>
+	//         <table>
+	//             <tr>
+	//                 <th>省</th>
+	//                 <th>市</th>
+	//                 <th>县</th>
+	//                 <th>操作</th>
+	//             </tr>
+	//             <tr v-for="item of items">
+	//                 <td>{{item.province}}</td>
+	//                 <td>{{item.town}}</td>
+	//                 <td>{{item.county}}</td>
+	//                 <td>
+	//                     <a href="javascript:;"
+	//                        class="weui_btn weui_btn_mini weui_btn_primary"
+	//                        @click="del(item)">删除</a>
+	//                 </td>
+	//             </tr>
+	//         </table>
+	//         <div class="weui_cells_title">点击添加</div>
+	//         <div class="weui_cells weui_cells_form">
+	//             <div class="weui_cell">
+	//                 <div class="weui_cell_hd"><label class="weui_label">省</label></div>
+	//                 <div class="weui_cell_bd weui_cell_primary">
+	//                     <input class="weui_input" type="text" placeholder="请输入省" v-model="item.province"/>
+	//                 </div>
+	//             </div>
+	//             <div class="weui_cell">
+	//                 <div class="weui_cell_hd"><label class="weui_label">市</label></div>
+	//                 <div class="weui_cell_bd weui_cell_primary">
+	//                     <input class="weui_input" type="text" placeholder="请输入市" v-model="item.town"/>
+	//                 </div>
+	//             </div>
+	//             <div class="weui_cell">
+	//                 <div class="weui_cell_hd"><label class="weui_label">县</label></div>
+	//                 <div class="weui_cell_bd weui_cell_primary">
+	//                     <input class="weui_input" type="text" placeholder="请输入县" v-model="item.county"/>
+	//                 </div>
+	//             </div>
+	//         </div>
+	//         <div class="weui_btn_area">
+	//             <a class="weui_btn weui_btn_primary"
+	//                href="javascript:"
+	//                @click="add">添加</a>
+	//         </div>
+	//     </div>
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            items: [{ province: '山西', town: '太原', county: '清徐' }, { province: '湖北', town: '武汉', county: 'XXX' }, { province: '湖南', town: '长沙', county: 'ZZZ' }, { province: '陕西', town: '西安', county: 'AAA' }]
+	        };
+	    },
+
+	    methods: {
+	        del: function del(item) {
+	            this.items.$remove(item);
+	        },
+	        add: function add() {
+	            this.items.push(this.item);
+	            this.item = '';
+	        }
+	    }
+	};
+	// </script>
+	// <style scoped>
+	//     table{
+	//         width:80%;
+	//         height:auto;
+	//         border-collapse: collapse;
+	//         margin:30px auto;
+	//     }
+	//     .table tr,
+	//     .table td{
+	//         padding:10px 20px;
+	//         text-align: center;
+	//         border: 1px solid #000;
+	//     }
+	// </style>
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"table\" _v-6b38452d=\"\">\n    <div class=\"hd\" _v-6b38452d=\"\">\n        <h1 class=\"page_title\" _v-6b38452d=\"\">Table</h1>\n        <p class=\"page_desc\" _v-6b38452d=\"\">Vue的Table</p>\n    </div>\n    <table _v-6b38452d=\"\">\n        <tbody _v-6b38452d=\"\"><tr _v-6b38452d=\"\">\n            <th _v-6b38452d=\"\">省</th>\n            <th _v-6b38452d=\"\">市</th>\n            <th _v-6b38452d=\"\">县</th>\n            <th _v-6b38452d=\"\">操作</th>\n        </tr>\n        <tr v-for=\"item of items\" _v-6b38452d=\"\">\n            <td _v-6b38452d=\"\">{{item.province}}</td>\n            <td _v-6b38452d=\"\">{{item.town}}</td>\n            <td _v-6b38452d=\"\">{{item.county}}</td>\n            <td _v-6b38452d=\"\">\n                <a href=\"javascript:;\" class=\"weui_btn weui_btn_mini weui_btn_primary\" @click=\"del(item)\" _v-6b38452d=\"\">删除</a>\n            </td>\n        </tr>\n    </tbody></table>\n    <div class=\"weui_cells_title\" _v-6b38452d=\"\">点击添加</div>\n    <div class=\"weui_cells weui_cells_form\" _v-6b38452d=\"\">\n        <div class=\"weui_cell\" _v-6b38452d=\"\">\n            <div class=\"weui_cell_hd\" _v-6b38452d=\"\"><label class=\"weui_label\" _v-6b38452d=\"\">省</label></div>\n            <div class=\"weui_cell_bd weui_cell_primary\" _v-6b38452d=\"\">\n                <input class=\"weui_input\" type=\"text\" placeholder=\"请输入省\" v-model=\"item.province\" _v-6b38452d=\"\">\n            </div>\n        </div>\n        <div class=\"weui_cell\" _v-6b38452d=\"\">\n            <div class=\"weui_cell_hd\" _v-6b38452d=\"\"><label class=\"weui_label\" _v-6b38452d=\"\">市</label></div>\n            <div class=\"weui_cell_bd weui_cell_primary\" _v-6b38452d=\"\">\n                <input class=\"weui_input\" type=\"text\" placeholder=\"请输入市\" v-model=\"item.town\" _v-6b38452d=\"\">\n            </div>\n        </div>\n        <div class=\"weui_cell\" _v-6b38452d=\"\">\n            <div class=\"weui_cell_hd\" _v-6b38452d=\"\"><label class=\"weui_label\" _v-6b38452d=\"\">县</label></div>\n            <div class=\"weui_cell_bd weui_cell_primary\" _v-6b38452d=\"\">\n                <input class=\"weui_input\" type=\"text\" placeholder=\"请输入县\" v-model=\"item.county\" _v-6b38452d=\"\">\n            </div>\n        </div>\n    </div>\n    <div class=\"weui_btn_area\" _v-6b38452d=\"\">\n        <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" @click=\"add\" _v-6b38452d=\"\">添加</a>\n    </div>\n</div>\n";
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(47)
+	__vue_script__ = __webpack_require__(49)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(50)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./dataBind.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(48);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(19)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(18)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.dataBind[_v-ea1c3a10]{\r\n    padding:20px;\r\n}\r\n.top[_v-ea1c3a10]{\r\n    width:100%;\r\n    height:auto;\r\n    margin-top: 40px;\r\n}\r\n.item[_v-ea1c3a10]{\r\n    display: inline-block;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    border: 1px solid #000;\r\n    margin-right: 30px;\r\n    margin-bottom: 20px;\r\n}\r\n.item .remove[_v-ea1c3a10]{\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n.item .remove[_v-ea1c3a10]:hover{\r\n    color: red;\r\n}\r\n.check[_v-ea1c3a10]{\r\n    margin-top: 10px;\r\n}\r\ninput[_v-ea1c3a10]{\r\n    outline: none;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 49 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14298,17 +14718,17 @@
 	// </style>
 
 /***/ },
-/* 40 */
+/* 50 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"dataBind\" _v-ea1c3a10=\"\">\n    <div class=\"hd\" _v-ea1c3a10=\"\">\n        <h1 class=\"page_title\" _v-ea1c3a10=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-ea1c3a10=\"\">利用双向数据绑定实现</p>\n    </div>\n    <div _v-ea1c3a10=\"\">说明：点击下面的选项会出现上面相应的块儿，如果点击上面块儿中的‘X’则可以关闭</div>\n    <div class=\"top\" _v-ea1c3a10=\"\">\n        <span class=\"item\" v-for=\"item in items\" _v-ea1c3a10=\"\">{{item.place}}<span class=\"remove\" @click.stop=\"removeFun($index)\" _v-ea1c3a10=\"\">X</span></span>\n    </div>\n    <div class=\"check\" _v-ea1c3a10=\"\">\n        <span class=\"check_item\" v-for=\"checkbox in checkboxes\" _v-ea1c3a10=\"\">\n            <input class=\"checkbox_input\" type=\"checkbox\" :id=\"checkbox.id\" v-model=\"selected[$index]\" @click.stop=\"addFun($index)\" _v-ea1c3a10=\"\"><label :for=\"checkbox.id\" _v-ea1c3a10=\"\">{{checkbox.place}}</label>\n        </span>\n    </div>\n</div>\n";
 
 /***/ },
-/* 41 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(42)
+	__vue_template__ = __webpack_require__(52)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14327,7 +14747,7 @@
 	})()}
 
 /***/ },
-/* 42 */
+/* 52 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"form\">\n    aaaaaa\n</div>\n";

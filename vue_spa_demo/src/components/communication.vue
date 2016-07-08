@@ -1,3 +1,4 @@
+<!--子组件-->
 <template>
     <div class="communication">
         <div class="weui_cells_title">父子组件单向通信---子组件1</div>

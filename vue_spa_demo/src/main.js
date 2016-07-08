@@ -8,6 +8,8 @@ import list from './components/list.vue';
 import detail from './components/detail.vue';
 import comDemo from './components/com_demo.vue';
 import conditionRouter from './components/condition_router.vue';
+import wechatImg from './components/wechatImg.vue';
+import table from './components/table.vue';
 import dataBind from './components/dataBind.vue';
 import form from './components/form.vue';
 
@@ -32,7 +34,13 @@ router.map({
     component: comDemo
   },
   '/conditionRouter':{
-    component:  conditionRouter
+    component:conditionRouter
+  },
+  '/wechatImg':{
+    component:wechatImg
+  },
+  '/table':{
+    component:table
   },
   '/form':{
     component: form

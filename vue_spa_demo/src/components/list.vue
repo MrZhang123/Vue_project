@@ -19,6 +19,14 @@
                 <span class="weui_cell_bd weui_cell_primary">根据条件跳转路由</span>
                 <span class="weui_cell_ft"></span>
             </a>
+            <a class="weui_cell" v-link="{path:'/wechatImg' , activeClass:'active'}">
+                <span class="weui_cell_bd weui_cell_primary">模仿微信点击图片放大</span>
+                <span class="weui_cell_ft"></span>
+            </a>
+            <a class="weui_cell" v-link="{path:'/table' , activeClass:'active'}">
+                <span class="weui_cell_bd weui_cell_primary">Vue实现自定义表格</span>
+                <span class="weui_cell_ft"></span>
+            </a>
         </div>
         <div class="weui_cells_title">详情页</div>
         <div class="weui_panel weui_panel_access weui_cells_access">
