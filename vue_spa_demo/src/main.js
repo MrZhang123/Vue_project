@@ -10,6 +10,7 @@ import comDemo from './components/com_demo.vue';
 import conditionRouter from './components/condition_router.vue';
 import wechatImg from './components/wechatImg.vue';
 import table from './components/table.vue';
+import inputCheck from './components/inputCheck.vue';
 import dataBind from './components/dataBind.vue';
 import form from './components/form.vue';
 
@@ -41,6 +42,9 @@ router.map({
   },
   '/table':{
     component:table
+  },
+  '/inputCheck':{
+    component:inputCheck
   },
   '/form':{
     component: form
