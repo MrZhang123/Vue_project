@@ -90,20 +90,25 @@
 
 	var _inputCheck2 = _interopRequireDefault(_inputCheck);
 
-	var _dataBind = __webpack_require__(126);
+	var _todolist = __webpack_require__(126);
+
+	var _todolist2 = _interopRequireDefault(_todolist);
+
+	var _dataBind = __webpack_require__(131);
 
 	var _dataBind2 = _interopRequireDefault(_dataBind);
 
-	var _form = __webpack_require__(131);
+	var _form = __webpack_require__(136);
 
 	var _form2 = _interopRequireDefault(_form);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_vue2.default.use(_vueRouter2.default);
+	//在list页中demo的组件
+
 
 	//引入组件
-
+	_vue2.default.use(_vueRouter2.default);
 
 	var app = _vue2.default.extend(_app2.default);
 
@@ -135,6 +140,9 @@
 	  '/inputCheck': {
 	    component: _inputCheck2.default
 	  },
+	  '/propsdata': {
+	    component: _todolist2.default
+	  },
 	  '/form': {
 	    component: _form2.default
 	  },
@@ -155,7 +163,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {/*!
-	 * Vue.js v1.0.24
+	 * Vue.js v1.0.26
 	 * (c) 2016 Evan You
 	 * Released under the MIT License.
 	 */
@@ -554,10 +562,15 @@
 
 	// UA sniffing for working around browser-specific quirks
 	var UA = inBrowser && window.navigator.userAgent.toLowerCase();
+	var isIE = UA && UA.indexOf('trident') > 0;
 	var isIE9 = UA && UA.indexOf('msie 9.0') > 0;
 	var isAndroid = UA && UA.indexOf('android') > 0;
 	var isIos = UA && /(iphone|ipad|ipod|ios)/i.test(UA);
-	var isWechat = UA && UA.indexOf('micromessenger') > 0;
+	var iosVersionMatch = isIos && UA.match(/os ([\d_]+)/);
+	var iosVersion = iosVersionMatch && iosVersionMatch[1].split('_');
+
+	// detecting iOS UIWebView by indexedDB
+	var hasMutationObserverBug = iosVersion && Number(iosVersion[0]) >= 9 && Number(iosVersion[1]) >= 3 && !window.indexedDB;
 
 	var transitionProp = undefined;
 	var transitionEndEvent = undefined;
@@ -598,7 +611,7 @@
 	  }
 
 	  /* istanbul ignore if */
-	  if (typeof MutationObserver !== 'undefined' && !(isWechat && isIos)) {
+	  if (typeof MutationObserver !== 'undefined' && !hasMutationObserverBug) {
 	    var counter = 1;
 	    var observer = new MutationObserver(nextTickHandler);
 	    var textNode = document.createTextNode(counter);
@@ -670,12 +683,12 @@
 
 	p.put = function (key, value) {
 	  var removed;
-	  if (this.size === this.limit) {
-	    removed = this.shift();
-	  }
 
 	  var entry = this.get(key, true);
 	  if (!entry) {
+	    if (this.size === this.limit) {
+	      removed = this.shift();
+	    }
 	    entry = {
 	      key: key
 	    };
@@ -920,7 +933,7 @@
 	  var unsafeOpen = escapeRegex(config.unsafeDelimiters[0]);
 	  var unsafeClose = escapeRegex(config.unsafeDelimiters[1]);
 	  tagRE = new RegExp(unsafeOpen + '((?:.|\\n)+?)' + unsafeClose + '|' + open + '((?:.|\\n)+?)' + close, 'g');
-	  htmlRE = new RegExp('^' + unsafeOpen + '.*' + unsafeClose + '$');
+	  htmlRE = new RegExp('^' + unsafeOpen + '((?:.|\\n)+?)' + unsafeClose + '$');
 	  // reset cache
 	  cache = new Cache(1000);
 	}
@@ -1707,7 +1720,8 @@
 	      return (/HTMLUnknownElement/.test(el.toString()) &&
 	        // Chrome returns unknown for several HTML5 elements.
 	        // https://code.google.com/p/chromium/issues/detail?id=540526
-	        !/^(data|time|rtc|rb)$/.test(tag)
+	        // Firefox returns unknown for some "Interactive elements."
+	        !/^(data|time|rtc|rb|details|dialog|summary)$/.test(tag)
 	      );
 	    }
 	  };
@@ -2043,7 +2057,9 @@
 	  }
 	  if (child.mixins) {
 	    for (var i = 0, l = child.mixins.length; i < l; i++) {
-	      parent = mergeOptions(parent, child.mixins[i], vm);
+	      var mixin = child.mixins[i];
+	      var mixinOptions = mixin.prototype instanceof Vue ? mixin.options : mixin;
+	      parent = mergeOptions(parent, mixinOptions, vm);
 	    }
 	  }
 	  for (key in parent) {
@@ -2471,10 +2487,13 @@
 		hasProto: hasProto,
 		inBrowser: inBrowser,
 		devtools: devtools,
+		isIE: isIE,
 		isIE9: isIE9,
 		isAndroid: isAndroid,
 		isIos: isIos,
-		isWechat: isWechat,
+		iosVersionMatch: iosVersionMatch,
+		iosVersion: iosVersion,
+		hasMutationObserverBug: hasMutationObserverBug,
 		get transitionProp () { return transitionProp; },
 		get transitionEndEvent () { return transitionEndEvent; },
 		get animationProp () { return animationProp; },
@@ -2962,7 +2981,9 @@
 	var restoreRE = /"(\d+)"/g;
 	var pathTestRE = /^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*|\['.*?'\]|\[".*?"\]|\[\d+\]|\[[A-Za-z_$][\w$]*\])*$/;
 	var identRE = /[^\w$\.](?:[A-Za-z_$][\w$]*)/g;
-	var booleanLiteralRE = /^(?:true|false)$/;
+	var literalValueRE$1 = /^(?:true|false|null|undefined|Infinity|NaN)$/;
+
+	function noop() {}
 
 	/**
 	 * Save / Rewrite / Restore
@@ -3044,7 +3065,7 @@
 	  // save strings and object literal keys
 	  var body = exp.replace(saveRE, save).replace(wsRE, '');
 	  // rewrite all paths
-	  // pad 1 space here becaue the regex matches 1 extra char
+	  // pad 1 space here because the regex matches 1 extra char
 	  body = (' ' + body).replace(identRE, rewrite).replace(restoreRE, restore);
 	  return makeGetterFn(body);
 	}
@@ -3065,7 +3086,15 @@
 	    return new Function('scope', 'return ' + body + ';');
 	    /* eslint-enable no-new-func */
 	  } catch (e) {
-	    process.env.NODE_ENV !== 'production' && warn('Invalid expression. ' + 'Generated function body: ' + body);
+	    if (process.env.NODE_ENV !== 'production') {
+	      /* istanbul ignore if */
+	      if (e.toString().match(/unsafe-eval|CSP/)) {
+	        warn('It seems you are using the default build of Vue.js in an environment ' + 'with Content Security Policy that prohibits unsafe-eval. ' + 'Use the CSP-compliant build instead: ' + 'http://vuejs.org/guide/installation.html#CSP-compliant-build');
+	      } else {
+	        warn('Invalid expression. ' + 'Generated function body: ' + body);
+	      }
+	    }
+	    return noop;
 	  }
 	}
 
@@ -3127,8 +3156,8 @@
 
 	function isSimplePath(exp) {
 	  return pathTestRE.test(exp) &&
-	  // don't treat true/false as paths
-	  !booleanLiteralRE.test(exp) &&
+	  // don't treat literal values as paths
+	  !literalValueRE$1.test(exp) &&
 	  // Math constants e.g. Math.PI, Math.E etc.
 	  exp.slice(0, 5) !== 'Math.';
 	}
@@ -3544,7 +3573,7 @@
 	  }
 	  var isA = isArray(val);
 	  var isO = isObject(val);
-	  if (isA || isO) {
+	  if ((isA || isO) && Object.isExtensible(val)) {
 	    if (val.__ob__) {
 	      var depId = val.__ob__.dep.id;
 	      if (seen.has(depId)) {
@@ -3607,6 +3636,7 @@
 
 	var tagRE$1 = /<([\w:-]+)/;
 	var entityRE = /&#?\w+?;/;
+	var commentRE = /<!--/;
 
 	/**
 	 * Convert a string template to a DocumentFragment.
@@ -3629,8 +3659,9 @@
 	  var frag = document.createDocumentFragment();
 	  var tagMatch = templateString.match(tagRE$1);
 	  var entityMatch = entityRE.test(templateString);
+	  var commentMatch = commentRE.test(templateString);
 
-	  if (!tagMatch && !entityMatch) {
+	  if (!tagMatch && !entityMatch && !commentMatch) {
 	    // text only, return a single text node.
 	    frag.appendChild(document.createTextNode(templateString));
 	  } else {
@@ -4597,7 +4628,7 @@
 	   * the filters. This is passed to and called by the watcher.
 	   *
 	   * It is necessary for this to be called during the
-	   * wathcer's dependency collection phase because we want
+	   * watcher's dependency collection phase because we want
 	   * the v-for to update when the source Object is mutated.
 	   */
 
@@ -4940,7 +4971,10 @@
 	  },
 
 	  update: function update(value) {
-	    this.el.value = _toString(value);
+	    // #3029 only update when the value changes. This prevent
+	    // browsers from overwriting values like selectionStart
+	    value = _toString(value);
+	    if (value !== this.el.value) this.el.value = value;
 	  },
 
 	  unbind: function unbind() {
@@ -4989,6 +5023,8 @@
 	var select = {
 
 	  bind: function bind() {
+	    var _this = this;
+
 	    var self = this;
 	    var el = this.el;
 
@@ -5020,7 +5056,12 @@
 	    // selectedIndex with value -1 to 0 when the element
 	    // is appended to a new parent, therefore we have to
 	    // force a DOM update whenever that happens...
-	    this.vm.$on('hook:attached', this.forceUpdate);
+	    this.vm.$on('hook:attached', function () {
+	      nextTick(_this.forceUpdate);
+	    });
+	    if (!inDoc(el)) {
+	      nextTick(this.forceUpdate);
+	    }
 	  },
 
 	  update: function update(value) {
@@ -6290,7 +6331,7 @@
 	  if (value === undefined) {
 	    value = getPropDefaultValue(vm, prop);
 	  }
-	  value = coerceProp(prop, value);
+	  value = coerceProp(prop, value, vm);
 	  var coerced = value !== rawValue;
 	  if (!assertProp(prop, value, vm)) {
 	    value = undefined;
@@ -6409,13 +6450,17 @@
 	 * @return {*}
 	 */
 
-	function coerceProp(prop, value) {
+	function coerceProp(prop, value, vm) {
 	  var coerce = prop.options.coerce;
 	  if (!coerce) {
 	    return value;
 	  }
-	  // coerce is a function
-	  return coerce(value);
+	  if (typeof coerce === 'function') {
+	    return coerce(value);
+	  } else {
+	    process.env.NODE_ENV !== 'production' && warn('Invalid coerce for prop "' + prop.name + '": expected function, got ' + typeof coerce + '.', vm);
+	    return value;
+	  }
 	}
 
 	/**
@@ -6947,10 +6992,9 @@
 	    // resolve on owner vm
 	    var hooks = resolveAsset(this.vm.$options, 'transitions', id);
 	    id = id || 'v';
+	    oldId = oldId || 'v';
 	    el.__v_trans = new Transition(el, id, hooks, this.vm);
-	    if (oldId) {
-	      removeClass(el, oldId + '-transition');
-	    }
+	    removeClass(el, oldId + '-transition');
 	    addClass(el, id + '-transition');
 	  }
 	};
@@ -7375,7 +7419,7 @@
 	          if (token.html) {
 	            replace(node, parseTemplate(value, true));
 	          } else {
-	            node.data = value;
+	            node.data = _toString(value);
 	          }
 	        } else {
 	          vm._bindDir(token.descriptor, node, host, scope);
@@ -8359,7 +8403,7 @@
 	  };
 	}
 
-	function noop() {}
+	function noop$1() {}
 
 	/**
 	 * A directive links a DOM element with a piece of data,
@@ -8458,7 +8502,7 @@
 	        }
 	      };
 	    } else {
-	      this._update = noop;
+	      this._update = noop$1;
 	    }
 	    var preProcess = this._preProcess ? bind(this._preProcess, this) : null;
 	    var postProcess = this._postProcess ? bind(this._postProcess, this) : null;
@@ -9896,7 +9940,7 @@
 
 	  json: {
 	    read: function read(value, indent) {
-	      return typeof value === 'string' ? value : JSON.stringify(value, null, Number(indent) || 2);
+	      return typeof value === 'string' ? value : JSON.stringify(value, null, arguments.length > 1 ? indent : 2);
 	    },
 	    write: function write(value) {
 	      try {
@@ -9969,7 +10013,13 @@
 
 	  pluralize: function pluralize(value) {
 	    var args = toArray(arguments, 1);
-	    return args.length > 1 ? args[value % 10 - 1] || args[args.length - 1] : args[0] + (value === 1 ? '' : 's');
+	    var length = args.length;
+	    if (length > 1) {
+	      var index = value % 10 - 1;
+	      return index in args ? args[index] : args[length - 1];
+	    } else {
+	      return args[0] + (value === 1 ? '' : 's');
+	    }
 	  },
 
 	  /**
@@ -10154,7 +10204,9 @@
 	          }
 	        }
 	        if (type === 'component' && isPlainObject(definition)) {
-	          definition.name = id;
+	          if (!definition.name) {
+	            definition.name = id;
+	          }
 	          definition = Vue.extend(definition);
 	        }
 	        this.options[type + 's'][id] = definition;
@@ -10169,7 +10221,7 @@
 
 	installGlobalAPI(Vue);
 
-	Vue.version = '1.0.24';
+	Vue.version = '1.0.26';
 
 	// devtools global hook
 	/* istanbul ignore next */
@@ -10193,6 +10245,31 @@
 	// shim for using process in browser
 
 	var process = module.exports = {};
+
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+
+	(function () {
+	  try {
+	    cachedSetTimeout = setTimeout;
+	  } catch (e) {
+	    cachedSetTimeout = function () {
+	      throw new Error('setTimeout is not defined');
+	    }
+	  }
+	  try {
+	    cachedClearTimeout = clearTimeout;
+	  } catch (e) {
+	    cachedClearTimeout = function () {
+	      throw new Error('clearTimeout is not defined');
+	    }
+	  }
+	} ())
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -10217,7 +10294,7 @@
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = setTimeout(cleanUpNextTick);
+	    var timeout = cachedSetTimeout(cleanUpNextTick);
 	    draining = true;
 
 	    var len = queue.length;
@@ -10234,7 +10311,7 @@
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    clearTimeout(timeout);
+	    cachedClearTimeout(timeout);
 	}
 
 	process.nextTick = function (fun) {
@@ -10246,7 +10323,7 @@
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
+	        cachedSetTimeout(drainQueue, 0);
 	    }
 	};
 
@@ -13015,7 +13092,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./app.vue"
+	  var id = "_v-6e9cc7e8/app.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13049,7 +13126,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./home.vue"
+	  var id = "_v-661bdd50/home.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13082,7 +13159,7 @@
 	//     <div class="bd" style="height: 100%;">
 	//         <div class="weui_tab">
 	//             <ul class="weui_navbar">
-	//                 <li class="weui_navbar_item"                   
+	//                 <li class="weui_navbar_item"                    
 	//                     v-for="tab in tabs"
 	//                     :class="{'weui_bar_item_on':$index===selected}"
 	//                     @click="choose($index)">{{tab.tabName}}</li>
@@ -13091,7 +13168,7 @@
 	//                 <component :is="currentView" transition="fade" transition-mode="out-in"></component>
 	//             </div>
 	//         </div>
-	//     </div>     
+	//     </div>      
 	// </div>
 	// </template>
 	// <script>
@@ -13112,6 +13189,11 @@
 	        choose: function choose(index) {
 	            this.selected = index;
 	            this.currentView = 'view_' + index;
+	        }
+	    },
+	    route: {
+	        data: function data() {
+	            /*每次切换路由，在渲染出页面前都会执行*/
 	        }
 	    }
 	};
@@ -13137,7 +13219,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./tab_1.vue"
+	  var id = "_v-9dfc1842/tab_1.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13208,7 +13290,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./tab_2.vue"
+	  var id = "_v-9ddfe940/tab_2.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13286,7 +13368,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./list.vue"
+	  var id = "_v-5968bce2/list.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13329,7 +13411,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -13654,6 +13736,10 @@
 	//                 <span class="weui_cell_bd weui_cell_primary">input框检查</span>
 	//                 <span class="weui_cell_ft"></span>
 	//             </a>
+	//             <a class="weui_cell" v-link="{path:'/propsdata' , activeClass:'active'}">
+	//                 <span class="weui_cell_bd weui_cell_primary">todoList Demo</span>
+	//                 <span class="weui_cell_ft"></span>
+	//             </a>
 	//         </div>
 	//         <div class="weui_cells_title">详情页</div>
 	//         <div class="weui_panel weui_panel_access weui_cells_access">
@@ -13694,7 +13780,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vue的一些demo</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/conditionRouter' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">根据条件跳转路由</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/wechatImg' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">模仿微信点击图片放大</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/table' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">Vue实现自定义表格</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/inputCheck' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">input框检查</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vue的一些demo</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/conditionRouter' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">根据条件跳转路由</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/wechatImg' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">模仿微信点击图片放大</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/table' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">Vue实现自定义表格</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/inputCheck' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">input框检查</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/propsdata' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">todoList Demo</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -13716,7 +13802,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./detail.vue"
+	  var id = "_v-1a580582/detail.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13773,7 +13859,6 @@
 
 	    computed: {
 	        /*这样就可以实现多个条件下显示不同的文字*/
-
 	        first: function first() {
 	            if (Math.random() > 0.5) {
 	                return '梵高先生';
@@ -13812,7 +13897,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./com_demo.vue"
+	  var id = "_v-6f277e5c/com_demo.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -13975,7 +14060,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./communication.vue"
+	  var id = "_v-3ceede35/communication.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14079,7 +14164,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./condition_router.vue"
+	  var id = "_v-731036de/condition_router.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14188,7 +14273,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./wechatImg.vue"
+	  var id = "_v-48aab91c/wechatImg.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14414,7 +14499,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./table.vue"
+	  var id = "_v-6b38452d/table.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14584,7 +14669,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./inputCheck.vue"
+	  var id = "_v-729d558f/inputCheck.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15175,6 +15260,7 @@
 	  // Thrash, waste and sodomy: IE GC bug
 	  var iframe = __webpack_require__(71)('iframe')
 	    , i      = enumBugKeys.length
+	    , lt     = '<'
 	    , gt     = '>'
 	    , iframeDocument;
 	  iframe.style.display = 'none';
@@ -15184,7 +15270,7 @@
 	  // html.removeChild(iframe);
 	  iframeDocument = iframe.contentWindow.document;
 	  iframeDocument.open();
-	  iframeDocument.write('<script>document.F=Object</script' + gt);
+	  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
 	  iframeDocument.close();
 	  createDict = iframeDocument.F;
 	  while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
@@ -15202,6 +15288,7 @@
 	  } else result = createDict();
 	  return Properties === undefined ? result : dPs(result, Properties);
 	};
+
 
 /***/ },
 /* 79 */
@@ -15532,7 +15619,6 @@
 	'use strict';
 	var dP          = __webpack_require__(65).f
 	  , create      = __webpack_require__(78)
-	  , hide        = __webpack_require__(64)
 	  , redefineAll = __webpack_require__(103)
 	  , ctx         = __webpack_require__(62)
 	  , anInstance  = __webpack_require__(104)
@@ -16176,7 +16262,7 @@
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
+	  console.warn("[vue-loader] src\\components\\todolist.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(130)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -16187,7 +16273,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./dataBind.vue"
+	  var id = "_v-16100f55/todolist.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16211,8 +16297,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-16100f55&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./todolist.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-16100f55&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./todolist.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -16230,13 +16316,171 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.dataBind[_v-ea1c3a10]{\r\n    padding:20px;\r\n}\r\n.top[_v-ea1c3a10]{\r\n    width:100%;\r\n    height:auto;\r\n    margin-top: 40px;\r\n}\r\n.item[_v-ea1c3a10]{\r\n    display: inline-block;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    border: 1px solid #000;\r\n    margin-right: 30px;\r\n    margin-bottom: 20px;\r\n}\r\n.item .remove[_v-ea1c3a10]{\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n.item .remove[_v-ea1c3a10]:hover{\r\n    color: red;\r\n}\r\n.check[_v-ea1c3a10]{\r\n    margin-top: 10px;\r\n}\r\ninput[_v-ea1c3a10]{\r\n    outline: none;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.finish p[_v-16100f55]{\r\n    text-decoration: line-through;\r\n}\r\n.page_desc[_v-16100f55]{\r\n    cursor: pointer;\r\n}\r\n.weui_cells_title[_v-16100f55]{\r\n    text-align: center;\r\n}\r\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 129 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="todolist">
+	//         <div class="hd">
+	//             <h1 class="page_title">TodoList</h1>
+	//             <p class="page_desc">Vue做一个todolist</p>
+	//         </div>
+	//         <div class="bd">
+	//             <div class="weui_cells weui_cells_form">
+	//                 <div class="weui_cell">
+	//                     <div class="weui_cell_hd">
+	//                         <label class="weui_label">要做的事</label>
+	//                     </div>
+	//                     <div class="weui_cell_bd weui_cell_primary">
+	//                         <input class="weui_input"
+	//                                placeholder="请输入计划"
+	//                                @keyup.enter="addTodo"
+	//                                v-model="newTodo">
+	//                     </div>
+	//                 </div>
+	//             </div>
+	//             <div class="weui_cells_title">计划表</div>
+	//             <ul class="weui_cells weui_cells_access">
+	//                 <li v-for="item in items"
+	//                     :class="[default,{finish:item.finish}]">
+	//                     <div class="weui_cell_bd weui_cell_primary"
+	//                          @click="toggleFinish(item)">
+	//                         <p>{{item.content}}</p>
+	//                     </div>
+	//                     <button class="weui_btn weui_btn_mini weui_btn_primary"
+	//                          @click="remove($index)">删除</button>
+	//                 </li>
+	//             </ul>
+	//         </div>
+	//     </div>
+	// </template>
+	// <style scoped>
+	// .finish p{
+	//     text-decoration: line-through;
+	// }
+	// .page_desc{
+	//     cursor: pointer;
+	// }
+	// .weui_cells_title{
+	//     text-align: center;
+	// }
+	// </style>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            items: [{ content: 'read', finish: false }, { content: 'running', finish: true }],
+	            default: 'weui_cell',
+	            newTodo: ''
+	        };
+	    },
+
+	    methods: {
+	        toggleFinish: function toggleFinish(item) {
+	            item.finish = !item.finish;
+	        },
+	        addTodo: function addTodo() {
+	            var newitem = this.newTodo.trim();
+	            if (newitem !== '') {
+	                this.items.push({ content: newitem, finish: false });
+	                this.newTodo = '';
+	            }
+	        },
+	        remove: function remove(index) {
+	            this.items.splice(index, 1);
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 130 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"todolist\" _v-16100f55=\"\">\n    <div class=\"hd\" _v-16100f55=\"\">\n        <h1 class=\"page_title\" _v-16100f55=\"\">TodoList</h1>\n        <p class=\"page_desc\" _v-16100f55=\"\">Vue做一个todolist</p>\n    </div>\n    <div class=\"bd\" _v-16100f55=\"\">\n        <div class=\"weui_cells weui_cells_form\" _v-16100f55=\"\">\n            <div class=\"weui_cell\" _v-16100f55=\"\">\n                <div class=\"weui_cell_hd\" _v-16100f55=\"\">\n                    <label class=\"weui_label\" _v-16100f55=\"\">要做的事</label>\n                </div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-16100f55=\"\">\n                    <input class=\"weui_input\" placeholder=\"请输入计划\" @keyup.enter=\"addTodo\" v-model=\"newTodo\" _v-16100f55=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-16100f55=\"\">计划表</div>\n        <ul class=\"weui_cells weui_cells_access\" _v-16100f55=\"\">\n            <li v-for=\"item in items\" :class=\"[default,{finish:item.finish}]\" _v-16100f55=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" @click=\"toggleFinish(item)\" _v-16100f55=\"\">\n                    <p _v-16100f55=\"\">{{item.content}}</p>\n                </div>\n                <button class=\"weui_btn weui_btn_mini weui_btn_primary\" @click=\"remove($index)\" _v-16100f55=\"\">删除</button>\n            </li>\n        </ul>\n    </div>\n</div>\n";
+
+/***/ },
+/* 131 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(132)
+	__vue_script__ = __webpack_require__(134)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(135)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-ea1c3a10/dataBind.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 132 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(133);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(19)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(18)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.dataBind[_v-ea1c3a10]{\r\n    padding:20px;\r\n}\r\n.top[_v-ea1c3a10]{\r\n    width:100%;\r\n    height:auto;\r\n    margin-top: 40px;\r\n}\r\n.item[_v-ea1c3a10]{\r\n    display: inline-block;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    border: 1px solid #000;\r\n    margin-right: 30px;\r\n    margin-bottom: 20px;\r\n}\r\n.item .remove[_v-ea1c3a10]{\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n.item .remove[_v-ea1c3a10]:hover{\r\n    color: red;\r\n}\r\n.check[_v-ea1c3a10]{\r\n    margin-top: 10px;\r\n}\r\ninput[_v-ea1c3a10]{\r\n    outline: none;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 134 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16332,17 +16576,17 @@
 	// </style>
 
 /***/ },
-/* 130 */
+/* 135 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"dataBind\" _v-ea1c3a10=\"\">\n    <div class=\"hd\" _v-ea1c3a10=\"\">\n        <h1 class=\"page_title\" _v-ea1c3a10=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-ea1c3a10=\"\">利用双向数据绑定实现</p>\n    </div>\n    <div _v-ea1c3a10=\"\">说明：点击下面的选项会出现上面相应的块儿，如果点击上面块儿中的‘X’则可以关闭</div>\n    <div class=\"top\" _v-ea1c3a10=\"\">\n        <span class=\"item\" v-for=\"item in items\" _v-ea1c3a10=\"\">{{item.place}}<span class=\"remove\" @click.stop=\"removeFun($index)\" _v-ea1c3a10=\"\">X</span></span>\n    </div>\n    <div class=\"check\" _v-ea1c3a10=\"\">\n        <span class=\"check_item\" v-for=\"checkbox in checkboxes\" _v-ea1c3a10=\"\">\n            <input class=\"checkbox_input\" type=\"checkbox\" :id=\"checkbox.id\" v-model=\"selected[$index]\" @click.stop=\"addFun($index)\" _v-ea1c3a10=\"\"><label :for=\"checkbox.id\" _v-ea1c3a10=\"\">{{checkbox.place}}</label>\n        </span>\n    </div>\n</div>\n";
 
 /***/ },
-/* 131 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(132)
+	__vue_template__ = __webpack_require__(137)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -16352,7 +16596,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./form.vue"
+	  var id = "_v-c15b0a96/form.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16361,7 +16605,7 @@
 	})()}
 
 /***/ },
-/* 132 */
+/* 137 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"form\">\n    aaaaaa\n</div>\n";

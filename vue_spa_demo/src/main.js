@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 //引入组件
 import App from './app.vue';
 import home from './components/home.vue';
+//在list页中demo的组件
 import list from './components/list.vue';
 import detail from './components/detail.vue';
 import comDemo from './components/com_demo.vue';
@@ -11,6 +12,8 @@ import conditionRouter from './components/condition_router.vue';
 import wechatImg from './components/wechatImg.vue';
 import table from './components/table.vue';
 import inputCheck from './components/inputCheck.vue';
+import todolist from  './components/todolist.vue';
+
 import dataBind from './components/dataBind.vue';
 import form from './components/form.vue';
 
@@ -45,6 +48,9 @@ router.map({
   },
   '/inputCheck':{
     component:inputCheck
+  },
+  '/propsdata':{
+    component:todolist
   },
   '/form':{
     component: form
