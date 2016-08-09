@@ -36,6 +36,7 @@
 <style scoped>
 .finish p{
     text-decoration: line-through;
+    color: red;
 }
 .page_desc{
     cursor: pointer;

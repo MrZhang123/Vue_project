@@ -16316,7 +16316,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.finish p[_v-16100f55]{\r\n    text-decoration: line-through;\r\n}\r\n.page_desc[_v-16100f55]{\r\n    cursor: pointer;\r\n}\r\n.weui_cells_title[_v-16100f55]{\r\n    text-align: center;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.finish p[_v-16100f55]{\r\n    text-decoration: line-through;\r\n    color: red;\r\n}\r\n.page_desc[_v-16100f55]{\r\n    cursor: pointer;\r\n}\r\n.weui_cells_title[_v-16100f55]{\r\n    text-align: center;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -16368,6 +16368,7 @@
 	// <style scoped>
 	// .finish p{
 	//     text-decoration: line-through;
+	//     color: red;
 	// }
 	// .page_desc{
 	//     cursor: pointer;
