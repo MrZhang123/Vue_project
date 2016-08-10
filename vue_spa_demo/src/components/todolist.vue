@@ -46,15 +46,21 @@
 }
 </style>
 <script>
+import store from '../store';
 export default{
     data(){
         return{
-            items:[
-                {content:'read',finish:false},
-                {content:'running',finish:true}
-            ],
+            items:store.fetch(),
             default:'weui_cell',
             newTodo:''
+        }
+    },
+    watch:{
+        items:{
+            handler(items){
+                store.save(items);
+            },
+            deep:true
         }
     },
     methods:{

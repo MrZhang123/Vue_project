@@ -94,11 +94,11 @@
 
 	var _todolist2 = _interopRequireDefault(_todolist);
 
-	var _dataBind = __webpack_require__(131);
+	var _dataBind = __webpack_require__(134);
 
 	var _dataBind2 = _interopRequireDefault(_dataBind);
 
-	var _form = __webpack_require__(136);
+	var _form = __webpack_require__(139);
 
 	var _form2 = _interopRequireDefault(_form);
 
@@ -16263,7 +16263,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\todolist.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(130)
+	__vue_template__ = __webpack_require__(133)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -16323,13 +16323,55 @@
 
 /***/ },
 /* 129 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _store = __webpack_require__(130);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	    data: function data() {
+	        return {
+	            items: _store2.default.fetch(),
+	            default: 'weui_cell',
+	            newTodo: ''
+	        };
+	    },
+
+	    watch: {
+	        items: {
+	            handler: function handler(items) {
+	                _store2.default.save(items);
+	            },
+
+	            deep: true
+	        }
+	    },
+	    methods: {
+	        toggleFinish: function toggleFinish(item) {
+	            item.finish = !item.finish;
+	        },
+	        addTodo: function addTodo() {
+	            var newitem = this.newTodo.trim();
+	            if (newitem !== '') {
+	                this.items.push({ content: newitem, finish: false });
+	                this.newTodo = '';
+	            }
+	        },
+	        remove: function remove(index) {
+	            this.items.splice(index, 1);
+	        }
+	    }
+	};
+	// </script>
 	// <template>
 	//     <div class="todolist">
 	//         <div class="hd">
@@ -16378,51 +16420,67 @@
 	// }
 	// </style>
 	// <script>
-	exports.default = {
-	    data: function data() {
-	        return {
-	            items: [{ content: 'read', finish: false }, { content: 'running', finish: true }],
-	            default: 'weui_cell',
-	            newTodo: ''
-	        };
-	    },
-
-	    methods: {
-	        toggleFinish: function toggleFinish(item) {
-	            item.finish = !item.finish;
-	        },
-	        addTodo: function addTodo() {
-	            var newitem = this.newTodo.trim();
-	            if (newitem !== '') {
-	                this.items.push({ content: newitem, finish: false });
-	                this.newTodo = '';
-	            }
-	        },
-	        remove: function remove(index) {
-	            this.items.splice(index, 1);
-	        }
-	    }
-	};
-	// </script>
 
 /***/ },
 /* 130 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div class=\"todolist\" _v-16100f55=\"\">\n    <div class=\"hd\" _v-16100f55=\"\">\n        <h1 class=\"page_title\" _v-16100f55=\"\">TodoList</h1>\n        <p class=\"page_desc\" _v-16100f55=\"\">Vue做一个todolist</p>\n    </div>\n    <div class=\"bd\" _v-16100f55=\"\">\n        <div class=\"weui_cells weui_cells_form\" _v-16100f55=\"\">\n            <div class=\"weui_cell\" _v-16100f55=\"\">\n                <div class=\"weui_cell_hd\" _v-16100f55=\"\">\n                    <label class=\"weui_label\" _v-16100f55=\"\">要做的事</label>\n                </div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-16100f55=\"\">\n                    <input class=\"weui_input\" placeholder=\"请输入计划\" @keyup.enter=\"addTodo\" v-model=\"newTodo\" _v-16100f55=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-16100f55=\"\">计划表</div>\n        <ul class=\"weui_cells weui_cells_access\" _v-16100f55=\"\">\n            <li v-for=\"item in items\" :class=\"[default,{finish:item.finish}]\" _v-16100f55=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" @click=\"toggleFinish(item)\" _v-16100f55=\"\">\n                    <p _v-16100f55=\"\">{{item.content}}</p>\n                </div>\n                <button class=\"weui_btn weui_btn_mini weui_btn_primary\" @click=\"remove($index)\" _v-16100f55=\"\">删除</button>\n            </li>\n        </ul>\n    </div>\n</div>\n";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _stringify = __webpack_require__(131);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var STORAGE_KEY = 'todos-vuejs';
+	exports.default = {
+	    fetch: function fetch() {
+	        return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]');
+	    },
+	    save: function save(items) {
+	        window.localStorage.setItem(STORAGE_KEY, (0, _stringify2.default)(items));
+	    }
+	};
 
 /***/ },
 /* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = { "default": __webpack_require__(132), __esModule: true };
+
+/***/ },
+/* 132 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core  = __webpack_require__(61)
+	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return $JSON.stringify.apply($JSON, arguments);
+	};
+
+/***/ },
+/* 133 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"todolist\" _v-16100f55=\"\">\n    <div class=\"hd\" _v-16100f55=\"\">\n        <h1 class=\"page_title\" _v-16100f55=\"\">TodoList</h1>\n        <p class=\"page_desc\" _v-16100f55=\"\">Vue做一个todolist</p>\n    </div>\n    <div class=\"bd\" _v-16100f55=\"\">\n        <div class=\"weui_cells weui_cells_form\" _v-16100f55=\"\">\n            <div class=\"weui_cell\" _v-16100f55=\"\">\n                <div class=\"weui_cell_hd\" _v-16100f55=\"\">\n                    <label class=\"weui_label\" _v-16100f55=\"\">要做的事</label>\n                </div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-16100f55=\"\">\n                    <input class=\"weui_input\" placeholder=\"请输入计划\" @keyup.enter=\"addTodo\" v-model=\"newTodo\" _v-16100f55=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-16100f55=\"\">计划表</div>\n        <ul class=\"weui_cells weui_cells_access\" _v-16100f55=\"\">\n            <li v-for=\"item in items\" :class=\"[default,{finish:item.finish}]\" _v-16100f55=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" @click=\"toggleFinish(item)\" _v-16100f55=\"\">\n                    <p _v-16100f55=\"\">{{item.content}}</p>\n                </div>\n                <button class=\"weui_btn weui_btn_mini weui_btn_primary\" @click=\"remove($index)\" _v-16100f55=\"\">删除</button>\n            </li>\n        </ul>\n    </div>\n</div>\n";
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__webpack_require__(132)
-	__vue_script__ = __webpack_require__(134)
+	__webpack_require__(135)
+	__vue_script__ = __webpack_require__(137)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(135)
+	__vue_template__ = __webpack_require__(138)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -16441,13 +16499,13 @@
 	})()}
 
 /***/ },
-/* 132 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(133);
+	var content = __webpack_require__(136);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(19)(content, {});
@@ -16467,7 +16525,7 @@
 	}
 
 /***/ },
-/* 133 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(18)();
@@ -16481,7 +16539,7 @@
 
 
 /***/ },
-/* 134 */
+/* 137 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16577,17 +16635,17 @@
 	// </style>
 
 /***/ },
-/* 135 */
+/* 138 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"dataBind\" _v-ea1c3a10=\"\">\n    <div class=\"hd\" _v-ea1c3a10=\"\">\n        <h1 class=\"page_title\" _v-ea1c3a10=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-ea1c3a10=\"\">利用双向数据绑定实现</p>\n    </div>\n    <div _v-ea1c3a10=\"\">说明：点击下面的选项会出现上面相应的块儿，如果点击上面块儿中的‘X’则可以关闭</div>\n    <div class=\"top\" _v-ea1c3a10=\"\">\n        <span class=\"item\" v-for=\"item in items\" _v-ea1c3a10=\"\">{{item.place}}<span class=\"remove\" @click.stop=\"removeFun($index)\" _v-ea1c3a10=\"\">X</span></span>\n    </div>\n    <div class=\"check\" _v-ea1c3a10=\"\">\n        <span class=\"check_item\" v-for=\"checkbox in checkboxes\" _v-ea1c3a10=\"\">\n            <input class=\"checkbox_input\" type=\"checkbox\" :id=\"checkbox.id\" v-model=\"selected[$index]\" @click.stop=\"addFun($index)\" _v-ea1c3a10=\"\"><label :for=\"checkbox.id\" _v-ea1c3a10=\"\">{{checkbox.place}}</label>\n        </span>\n    </div>\n</div>\n";
 
 /***/ },
-/* 136 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(137)
+	__vue_template__ = __webpack_require__(140)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -16606,7 +16664,7 @@
 	})()}
 
 /***/ },
-/* 137 */
+/* 140 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"form\">\n    aaaaaa\n</div>\n";
