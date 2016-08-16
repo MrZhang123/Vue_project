@@ -43,7 +43,10 @@ export default{
             give_child_msg:'点击按钮后我会变'
         }
     },
-    props:['propsdata','propsdata_sync'],
+    props:['propsdata','propsdata_sync','propsdata_test'],
+    ready(){
+        console.log(this.propsdata_test);
+    },
     events:{
         'parent-mg':function(msg){
             this.give_child_msg=msg;

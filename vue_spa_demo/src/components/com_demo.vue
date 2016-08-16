@@ -45,6 +45,7 @@
             <div class="line">------------------------父子组件分割线------------------------</div>
             <detail-child
                 :propsdata="transmit_data"
+                :propsdata_test="transmit_test"
                 :propsdata_sync.sync="transmit_sync_data"></detail-child>
         </div>
     </div>
@@ -55,6 +56,10 @@ export default{
     data(){
         return{
             transmit_data:'试着改变文字',
+            transmit_test:[
+                {head:'这个数据',conntent:'来源于'},
+                {head:'我的',conntent:'父组件'}
+            ],
             transmit_sync_data:'实现父子组件双向数据通信',
             give_child_msg:'点击后下面按钮被传递给子组件'
         }

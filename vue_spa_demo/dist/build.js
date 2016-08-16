@@ -13940,7 +13940,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-6f277e5c]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-6f277e5c]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
 
 	// exports
 
@@ -13965,6 +13965,7 @@
 	    data: function data() {
 	        return {
 	            transmit_data: '试着改变文字',
+	            transmit_test: [{ head: '这个数据', conntent: '来源于' }, { head: '我的', conntent: '父组件' }],
 	            transmit_sync_data: '实现父子组件双向数据通信',
 	            give_child_msg: '点击后下面按钮被传递给子组件'
 	        };
@@ -14034,6 +14035,7 @@
 	//             <div class="line">------------------------父子组件分割线------------------------</div>
 	//             <detail-child
 	//                 :propsdata="transmit_data"
+	//                 :propsdata_test="transmit_test"
 	//                 :propsdata_sync.sync="transmit_sync_data"></detail-child>
 	//         </div>
 	//     </div>
@@ -14123,7 +14125,11 @@
 	        };
 	    },
 
-	    props: ['propsdata', 'propsdata_sync'],
+	    props: ['propsdata', 'propsdata_sync', 'propsdata_test'],
+	    ready: function ready() {
+	        console.log(this.propsdata_test);
+	    },
+
 	    events: {
 	        'parent-mg': function parentMg(msg) {
 	            this.give_child_msg = msg;
@@ -14142,7 +14148,7 @@
 /* 32 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n<div class=\"com_demo\" _v-6f277e5c=\"\">\n    <div class=\"hd\" _v-6f277e5c=\"\">\n        <h1 class=\"page_title\" _v-6f277e5c=\"\">通信</h1>\n        <p class=\"page_desc\" _v-6f277e5c=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-6f277e5c=\"\">\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-6f277e5c=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild()\" _v-6f277e5c=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-6f277e5c=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_sync.sync=\"transmit_sync_data\" _v-6f277e5c=\"\"></detail-child>\n    </div>\n</div>\n";
+	module.exports = "\n\n<div class=\"com_demo\" _v-6f277e5c=\"\">\n    <div class=\"hd\" _v-6f277e5c=\"\">\n        <h1 class=\"page_title\" _v-6f277e5c=\"\">通信</h1>\n        <p class=\"page_desc\" _v-6f277e5c=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-6f277e5c=\"\">\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-6f277e5c=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild()\" _v-6f277e5c=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-6f277e5c=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_test=\"transmit_test\" :propsdata_sync.sync=\"transmit_sync_data\" _v-6f277e5c=\"\"></detail-child>\n    </div>\n</div>\n";
 
 /***/ },
 /* 33 */
