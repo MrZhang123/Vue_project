@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="weui_btn_area">
-                <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips" @click="paraToChild()">点击后给子组件3传递数据</a>
+                <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips" @click="paraToChild($event)">点击后给子组件3传递数据</a>
             </div>
             <div class="line">------------------------父子组件分割线------------------------</div>
             <detail-child
@@ -68,7 +68,8 @@ export default{
         'detail-child':detailChild
     },
     methods:{
-        paraToChild(){
+        paraToChild(e){
+            console.log(e)
             this.$broadcast('parent-mg',this.give_child_msg);
         }
     }

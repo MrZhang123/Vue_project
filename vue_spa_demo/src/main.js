@@ -13,6 +13,9 @@ import wechatImg from './components/wechatImg.vue';
 import table from './components/table.vue';
 import inputCheck from './components/inputCheck.vue';
 import todolist from  './components/todolist.vue';
+import routerdata from './components/routerdata.vue';
+import tab1 from './components/routertab/tab1.vue';
+import tab2 from './components/routertab/tab2.vue';
 
 import dataBind from './components/dataBind.vue';
 import form from './components/form.vue';
@@ -51,6 +54,17 @@ router.map({
   },
   '/propsdata':{
     component:todolist
+  },
+  '/routerdata':{
+    component:routerdata,
+    subRoutes:{
+      '/':{
+        component:tab1
+      },
+      '/tab2':{
+        component:tab2
+      }
+    }
   },
   '/form':{
     component: form

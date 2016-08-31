@@ -94,21 +94,34 @@
 
 	var _todolist2 = _interopRequireDefault(_todolist);
 
-	var _dataBind = __webpack_require__(134);
+	var _routerdata = __webpack_require__(134);
+
+	var _routerdata2 = _interopRequireDefault(_routerdata);
+
+	var _tab = __webpack_require__(139);
+
+	var _tab2 = _interopRequireDefault(_tab);
+
+	var _tab3 = __webpack_require__(142);
+
+	var _tab4 = _interopRequireDefault(_tab3);
+
+	var _dataBind = __webpack_require__(144);
 
 	var _dataBind2 = _interopRequireDefault(_dataBind);
 
-	var _form = __webpack_require__(139);
+	var _form = __webpack_require__(149);
 
 	var _form2 = _interopRequireDefault(_form);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	_vue2.default.use(_vueRouter2.default);
 	//在list页中demo的组件
 
 
 	//引入组件
-	_vue2.default.use(_vueRouter2.default);
+
 
 	var app = _vue2.default.extend(_app2.default);
 
@@ -142,6 +155,17 @@
 	  },
 	  '/propsdata': {
 	    component: _todolist2.default
+	  },
+	  '/routerdata': {
+	    component: _routerdata2.default,
+	    subRoutes: {
+	      '/': {
+	        component: _tab2.default
+	      },
+	      '/tab2': {
+	        component: _tab4.default
+	      }
+	    }
 	  },
 	  '/form': {
 	    component: _form2.default
@@ -13411,7 +13435,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_cells_access[_v-5968bce2]{\r\n    margin:0;\r\n    border-top:0;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -13740,6 +13764,10 @@
 	//                 <span class="weui_cell_bd weui_cell_primary">todoList Demo</span>
 	//                 <span class="weui_cell_ft"></span>
 	//             </a>
+	//             <a class="weui_cell" v-link="{path:'/routerdata' , activeClass:'active'}">
+	//                 <span class="weui_cell_bd weui_cell_primary">利用路由实现tab切换并传参数</span>
+	//                 <span class="weui_cell_ft"></span>
+	//             </a>
 	//         </div>
 	//         <div class="weui_cells_title">详情页</div>
 	//         <div class="weui_panel weui_panel_access weui_cells_access">
@@ -13780,7 +13808,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vue的一些demo</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/conditionRouter' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">根据条件跳转路由</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/wechatImg' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">模仿微信点击图片放大</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/table' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">Vue实现自定义表格</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/inputCheck' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">input框检查</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/propsdata' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">todoList Demo</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"list\" _v-5968bce2=\"\">\n    <div class=\"hd\" _v-5968bce2=\"\">\n        <h1 class=\"page_title\" _v-5968bce2=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-5968bce2=\"\">Vue的一些demo</p>\n    </div>\n    <div class=\"bd\" _v-5968bce2=\"\">\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">Demo</div>\n        <div class=\"weui_cells weui_cells_access\" _v-5968bce2=\"\">\n            <a class=\"weui_cell\" v-link=\"{path:'/comDemo' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">组件通信</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/dataBind' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">双向数据绑定</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/conditionRouter' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">根据条件跳转路由</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/wechatImg' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">模仿微信点击图片放大</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/table' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">Vue实现自定义表格</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/inputCheck' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">input框检查</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/propsdata' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">todoList Demo</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n            <a class=\"weui_cell\" v-link=\"{path:'/routerdata' , activeClass:'active'}\" _v-5968bce2=\"\">\n                <span class=\"weui_cell_bd weui_cell_primary\" _v-5968bce2=\"\">利用路由实现tab切换并传参数</span>\n                <span class=\"weui_cell_ft\" _v-5968bce2=\"\"></span>\n            </a>\n        </div>\n        <div class=\"weui_cells_title\" _v-5968bce2=\"\">详情页</div>\n        <div class=\"weui_panel weui_panel_access weui_cells_access\" _v-5968bce2=\"\">\n            <div class=\"weui_panel_bd\" _v-5968bce2=\"\">\n                <a v-for=\"list_item in list_items\" v-link=\"{path:'/detail' , activeClass:'active'}\" class=\"weui_media_box weui_media_appmsg weui_cells_access\" _v-5968bce2=\"\">\n                    <div class=\"weui_media_hd\" _v-5968bce2=\"\">\n                        <img class=\"weui_media_appmsg_thumb\" :src=\"list_item.src\" alt=\"图片\" _v-5968bce2=\"\">\n                    </div>\n                    <div class=\"weui_media_bd\" _v-5968bce2=\"\">\n                        <h4 class=\"weui_media_title\" _v-5968bce2=\"\">{{list_item.title}}</h4>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.number}}</p>\n                        <p class=\"weui_media_desc\" _v-5968bce2=\"\">{{list_item.check}}</p>\n                    </div>\n                    <span class=\"weui_cell_ft\" _v-5968bce2=\"\">{{list_item.content}}</span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -13940,7 +13968,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-6f277e5c]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.line[_v-6f277e5c]{\n    text-align: center;\n    margin: 20px 0;\n    color: #0BB20C;\n}\n", ""]);
 
 	// exports
 
@@ -13975,7 +14003,8 @@
 	        'detail-child': _communication2.default
 	    },
 	    methods: {
-	        paraToChild: function paraToChild() {
+	        paraToChild: function paraToChild(e) {
+	            console.log(e);
 	            this.$broadcast('parent-mg', this.give_child_msg);
 	        }
 	    }
@@ -14030,7 +14059,7 @@
 	//                 </div>
 	//             </div>
 	//             <div class="weui_btn_area">
-	//                 <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips" @click="paraToChild()">点击后给子组件3传递数据</a>
+	//                 <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips" @click="paraToChild($event)">点击后给子组件3传递数据</a>
 	//             </div>
 	//             <div class="line">------------------------父子组件分割线------------------------</div>
 	//             <detail-child
@@ -14148,7 +14177,7 @@
 /* 32 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n<div class=\"com_demo\" _v-6f277e5c=\"\">\n    <div class=\"hd\" _v-6f277e5c=\"\">\n        <h1 class=\"page_title\" _v-6f277e5c=\"\">通信</h1>\n        <p class=\"page_desc\" _v-6f277e5c=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-6f277e5c=\"\">\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-6f277e5c=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild()\" _v-6f277e5c=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-6f277e5c=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_test=\"transmit_test\" :propsdata_sync.sync=\"transmit_sync_data\" _v-6f277e5c=\"\"></detail-child>\n    </div>\n</div>\n";
+	module.exports = "\n\n<div class=\"com_demo\" _v-6f277e5c=\"\">\n    <div class=\"hd\" _v-6f277e5c=\"\">\n        <h1 class=\"page_title\" _v-6f277e5c=\"\">通信</h1>\n        <p class=\"page_desc\" _v-6f277e5c=\"\">父子组件之间通信演示</p>\n    </div>\n    <div class=\"bd\" _v-6f277e5c=\"\">\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件单向通信---父组件1</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_data\" type=\"text\" placeholder=\"这里的文字改变子组件文字\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件2</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_hd\" _v-6f277e5c=\"\"><label class=\"weui_label\" _v-6f277e5c=\"\">输入文字</label></div>\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <input class=\"weui_input\" v-model=\"transmit_sync_data\" type=\"text\" placeholder=\"这里的文字改变是双向的改变\" _v-6f277e5c=\"\">\n                </div>\n            </div>\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">变化的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{transmit_sync_data}}</div>\n            </div>\n        </div>\n        <div class=\"weui_cells_title\" _v-6f277e5c=\"\">父子组件双向通信---父组件3</div>\n        <div class=\"weui_cells\" _v-6f277e5c=\"\">\n            <div class=\"weui_cell\" _v-6f277e5c=\"\">\n                <div class=\"weui_cell_bd weui_cell_primary\" _v-6f277e5c=\"\">\n                    <p _v-6f277e5c=\"\">要传递的文字</p>\n                </div>\n                <div class=\"weui_cell_ft\" _v-6f277e5c=\"\">{{give_child_msg}}</div>\n            </div>\n        </div>\n        <div class=\"weui_btn_area\" _v-6f277e5c=\"\">\n            <a class=\"weui_btn weui_btn_primary\" href=\"javascript:\" id=\"showTooltips\" @click=\"paraToChild($event)\" _v-6f277e5c=\"\">点击后给子组件3传递数据</a>\n        </div>\n        <div class=\"line\" _v-6f277e5c=\"\">------------------------父子组件分割线------------------------</div>\n        <detail-child :propsdata=\"transmit_data\" :propsdata_test=\"transmit_test\" :propsdata_sync.sync=\"transmit_sync_data\" _v-6f277e5c=\"\"></detail-child>\n    </div>\n</div>\n";
 
 /***/ },
 /* 33 */
@@ -16485,7 +16514,7 @@
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
+	  console.warn("[vue-loader] src\\components\\routerdata.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(138)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -16496,7 +16525,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-ea1c3a10/dataBind.vue"
+	  var id = "_v-751a9224/routerdata.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16520,8 +16549,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-751a9224&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./routerdata.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-751a9224&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./routerdata.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -16539,13 +16568,226 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.dataBind[_v-ea1c3a10]{\r\n    padding:20px;\r\n}\r\n.top[_v-ea1c3a10]{\r\n    width:100%;\r\n    height:auto;\r\n    margin-top: 40px;\r\n}\r\n.item[_v-ea1c3a10]{\r\n    display: inline-block;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    border: 1px solid #000;\r\n    margin-right: 30px;\r\n    margin-bottom: 20px;\r\n}\r\n.item .remove[_v-ea1c3a10]{\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n.item .remove[_v-ea1c3a10]:hover{\r\n    color: red;\r\n}\r\n.check[_v-ea1c3a10]{\r\n    margin-top: 10px;\r\n}\r\ninput[_v-ea1c3a10]{\r\n    outline: none;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.weui_tab_bd[_v-751a9224]{\r\n    width:100%;\r\n    height:200px;\r\n}\r\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 137 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="routerdata">
+	//         <div class="hd" style="height: 100%;">
+	//             <h1 class="page_title">Vue</h1>
+	//             <p class="page_desc">利用路由实现tab切换并传参数</p>
+	//         </div>
+	//         <div class="weui_tab">
+	//             <ul class="weui_navbar">
+	//                 <li class="weui_navbar_item"
+	//                     v-link="{path:'/routerdata'}" @click="random">Vuejs</li>
+	//                 <li class="weui_navbar_item" v-link="{path:'/routerdata/tab2'}">VueTab</li>
+	//             </ul>
+	//             <div class="weui_tab_bd">
+	//                 <router-view :message="msg"></router-view>
+	//             </div>
+	//         </div>
+	//     </div>
+	// </template>
+	// <style scoped>
+	// .weui_tab_bd{
+	//     width:100%;
+	//     height:200px;
+	// }
+	// </style>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            msg: ''
+	        };
+	    },
+
+	    methods: {
+	        random: function random() {
+	            this.msg = Math.random();
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 138 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"routerdata\" _v-751a9224=\"\">\n    <div class=\"hd\" style=\"height: 100%;\" _v-751a9224=\"\">\n        <h1 class=\"page_title\" _v-751a9224=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-751a9224=\"\">利用路由实现tab切换并传参数</p>\n    </div>\n    <div class=\"weui_tab\" _v-751a9224=\"\">\n        <ul class=\"weui_navbar\" _v-751a9224=\"\">\n            <li class=\"weui_navbar_item\" v-link=\"{path:'/routerdata'}\" @click=\"random\" _v-751a9224=\"\">Vuejs</li>\n            <li class=\"weui_navbar_item\" v-link=\"{path:'/routerdata/tab2'}\" _v-751a9224=\"\">VueTab</li>\n        </ul>\n        <div class=\"weui_tab_bd\" _v-751a9224=\"\">\n            <router-view :message=\"msg\" _v-751a9224=\"\"></router-view>\n        </div>\n    </div>\n</div>\n";
+
+/***/ },
+/* 139 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(140)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\routertab\\tab1.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(141)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-8cd74fc6/tab1.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 140 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="tab tab1">{{message}}</div>
+	// </template>
+	// <script>
+	exports.default = {
+	    props: ['message'],
+	    route: {
+	        data: function data() {
+	            if (this.message === '') {
+	                this.message = 'empty';
+	            }
+	            console.log(this.message);
+	        }
+	    }
+	};
+	// </script>
+
+/***/ },
+/* 141 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"tab tab1\">{{message}}</div>\n";
+
+/***/ },
+/* 142 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(143)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-8cbb20c4/tab2.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 143 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"tab tab2\">tab2</div>\n";
+
+/***/ },
+/* 144 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(145)
+	__vue_script__ = __webpack_require__(147)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\dataBind.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(148)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-ea1c3a10/dataBind.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 145 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(146);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(19)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea1c3a10&scoped=true!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./dataBind.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 146 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(18)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.dataBind[_v-ea1c3a10]{\r\n    padding:20px;\r\n}\r\n.top[_v-ea1c3a10]{\r\n    width:100%;\r\n    height:auto;\r\n    margin-top: 40px;\r\n}\r\n.item[_v-ea1c3a10]{\r\n    display: inline-block;\r\n    line-height: 30px;\r\n    text-align: center;\r\n    border: 1px solid #000;\r\n    margin-right: 30px;\r\n    margin-bottom: 20px;\r\n}\r\n.item .remove[_v-ea1c3a10]{\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n.item .remove[_v-ea1c3a10]:hover{\r\n    color: red;\r\n}\r\n.check[_v-ea1c3a10]{\r\n    margin-top: 10px;\r\n}\r\ninput[_v-ea1c3a10]{\r\n    outline: none;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 147 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16641,17 +16883,17 @@
 	// </style>
 
 /***/ },
-/* 138 */
+/* 148 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"dataBind\" _v-ea1c3a10=\"\">\n    <div class=\"hd\" _v-ea1c3a10=\"\">\n        <h1 class=\"page_title\" _v-ea1c3a10=\"\">Vue</h1>\n        <p class=\"page_desc\" _v-ea1c3a10=\"\">利用双向数据绑定实现</p>\n    </div>\n    <div _v-ea1c3a10=\"\">说明：点击下面的选项会出现上面相应的块儿，如果点击上面块儿中的‘X’则可以关闭</div>\n    <div class=\"top\" _v-ea1c3a10=\"\">\n        <span class=\"item\" v-for=\"item in items\" _v-ea1c3a10=\"\">{{item.place}}<span class=\"remove\" @click.stop=\"removeFun($index)\" _v-ea1c3a10=\"\">X</span></span>\n    </div>\n    <div class=\"check\" _v-ea1c3a10=\"\">\n        <span class=\"check_item\" v-for=\"checkbox in checkboxes\" _v-ea1c3a10=\"\">\n            <input class=\"checkbox_input\" type=\"checkbox\" :id=\"checkbox.id\" v-model=\"selected[$index]\" @click.stop=\"addFun($index)\" _v-ea1c3a10=\"\"><label :for=\"checkbox.id\" _v-ea1c3a10=\"\">{{checkbox.place}}</label>\n        </span>\n    </div>\n</div>\n";
 
 /***/ },
-/* 139 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(140)
+	__vue_template__ = __webpack_require__(150)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -16670,7 +16912,7 @@
 	})()}
 
 /***/ },
-/* 140 */
+/* 150 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"form\">\n    aaaaaa\n</div>\n";

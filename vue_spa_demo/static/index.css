@@ -28,3 +28,9 @@ body{
 .fade-leave {
     opacity: 0;
 }
+.tab{
+    line-height:200px;
+    font-size: 50px;
+    font-weight:bold;
+    text-align: center;
+}
