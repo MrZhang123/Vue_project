@@ -1,4 +1,4 @@
-# Vue Component Demo
+# Vue1.x Component Demo
 Built with `Vue.js` , `vue-router` , with routing , comments , comment folding.<br/>
 The build setup uses webpack and the vue-loader plugin.
 ## Building 
