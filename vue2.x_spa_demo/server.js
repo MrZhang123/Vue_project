@@ -7,7 +7,6 @@ config.entry.unshift("webpack-dev-server/client?http://localhost:8080/", "webpac
 const compiler = webpack(config);
 
 const server = new webpackDevServer(compiler,{
-    inline:true,
     hot:true,
     noInfo:true,
     filename:config.output.filename,
