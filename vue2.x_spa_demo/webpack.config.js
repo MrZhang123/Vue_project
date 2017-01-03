@@ -25,11 +25,14 @@ module.exports = {
       //解析.vue文件
       {
         test:/\.vue$/,
+        /*use 多个loader的写法*/
+        use:['vue-loader'],
+        /* or
         use:[
           {
             loader:'vue'
           }
-        ]
+        ]*/
       },
       //图片转化，小于8K自动转化为base64的编码
       {
