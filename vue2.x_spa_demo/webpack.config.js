@@ -45,6 +45,10 @@ module.exports = {
       }
     ]
   },
+  //禁止显示webpack的build.js太大的提示
+  performance: { 
+    hints: false
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
