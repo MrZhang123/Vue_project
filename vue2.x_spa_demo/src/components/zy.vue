@@ -1,9 +1,9 @@
 <template>
-    <div>1</div>
+    <div>测试路由1</div>
 </template>
 <style scoped>
     div{
         text-align: center;
-        font-size: 20px;
+        font-size: 30px;
     }
 </style>

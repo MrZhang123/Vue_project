@@ -1,36 +1,47 @@
 <template>
 <div class="page">
-    <router-view></router-view>
+    <transition name="fade" mode="out-in">
+        <router-view></router-view>
+    </transition>
     <div class="page__bd" style="height: 100%;">
         <div class="weui-tab">
             <div class="weui-tabbar"> 
-                <!--<a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">-->
-                <router-link to="aa">
-                    <p class="weui-tabbar__label">通讯录</p>
+                <router-link 
+                v-for="tabbarName of tabbarNames"
+                :to="tabbarName.name"
+                class="weui-tabbar__item">
+                    <p class="weui-tabbar__label">{{tabbarName.name}}</p>
                 </router-link>
-                    
-                <!--</a>-->
-                <router-link to="bb">
-                    <p class="weui-tabbar__label">发现</p>
-                </router-link>
-                <a href="javascript:;" class="weui-tabbar__item">
-                    <p class="weui-tabbar__label">通讯录</p>
-                </a>
-                <a href="javascript:;" class="weui-tabbar__item">
-                    <p class="weui-tabbar__label">发现</p>
-                </a>
-                <a href="javascript:;" class="weui-tabbar__item">
-                    <p class="weui-tabbar__label">我</p>
-                </a>
+                <!--weui-bar__item_on-->
             </div>
         </div>
     </div>
 </div>
 </template>
+<script>
+export default {
+    data(){
+        return{
+            tabbarNames:[
+                {name:'ZY'},
+                {name:'JS'},
+                {name:'CSS'}
+            ]
+        }
+    }
+}
+</script>
 <style scoped>
     .weui-tabbar{
         position: fixed;
         left: 0;
         bottom: 0;
+    }
+    .weui-tabbar__item{
+        padding: 10px 0;
+        cursor: pointer;
+    }
+    .weui-tabbar__item .weui-tabbar__label{
+        font-size: 18px;
     }
 </style>
