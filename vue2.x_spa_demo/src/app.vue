@@ -11,8 +11,7 @@
                 :to="tabbarName.name"
                 @click.native="clickFun(index)"
                 class="weui-tabbar__item"
-                active-class
-                exact:ture>
+                active-class>
                     <p class="weui-tabbar__label">{{tabbarName.name}}</p>
                 </router-link>
                 <!--weui-bar__item_on-->
