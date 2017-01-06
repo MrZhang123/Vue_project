@@ -4,3 +4,6 @@
 .fade-enter , .fade-leave-active{
     opacity: 0;
 }
+.page{
+    padding-bottom: 52px;
+}

@@ -1,5 +1,5 @@
 <template>
-    <div>测试路由2</div>
+    <div>2</div>
 </template>
 <style scoped>
     div{
