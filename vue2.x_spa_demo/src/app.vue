@@ -21,11 +21,13 @@
 </div>
 </template>
 <script>
+import router from '../router';
+
 export default {
     data(){
         return{
             tabbarNames:[
-                {name:'ZY'},
+                {name:'tab'},
                 {name:'JS'},
                 {name:'CSS'}
             ],
@@ -33,7 +35,7 @@ export default {
     },
     methods:{
         clickFun(index){
-            
+            console.log(index);
         }
     }
 }
