@@ -8,7 +8,7 @@
             <div class="weui-tabbar"> 
                 <router-link 
                 v-for="(tabbarName,index) of tabbarNames"
-                :to="tabbarName.name"
+                :to="tabbarName.tabLink"
                 @click.native="clickFun(index)"
                 class="weui-tabbar__item"
                 active-class>
@@ -21,15 +21,13 @@
 </div>
 </template>
 <script>
-import router from '../router';
-
 export default {
     data(){
         return{
             tabbarNames:[
-                {name:'tab'},
-                {name:'JS'},
-                {name:'CSS'}
+                {name:'demo',tabLink:'tab'},
+                {name:'JS',tabLink:'JS'},
+                {name:'CSS',tabLink:'css'}
             ],
         }
     },
