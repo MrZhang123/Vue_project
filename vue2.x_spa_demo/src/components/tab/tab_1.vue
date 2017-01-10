@@ -1,36 +1,34 @@
 <template>
     <div class="tab tab-1">
-        <div class="page  article js_show">
-            <div class="page__hd">
-                <h1 class="page__title">Article</h1>
-                <p class="page__desc">文章</p>
-            </div>
-            <div class="page__bd">
-                <article class="weui-article">
-                    <h1>大标题</h1>
-                    <section>
-                        <h2 class="title">章标题</h2>
-                        <section>
-                            <h3>1.1 节标题</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat.
-                            </p>
-                        </section>
-                        <section>
-                            <h3>1.2 节标题</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </section>
-                    </section>
-                </article>
+        <div class="page__bd">
+            <div class="weui-cells">
+                <router-link
+                class="weui-cell weui-cell_access"
+                v-for="demo of demos"
+                :to="demo.demoLink"
+                >
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">{{demo.demoName}}</span>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </router-link>
             </div>
         </div>
     </div>
 </template>
+<script>
+export default{
+    data(){
+        return{
+            demos:[
+                {demoName:'Props传递数据',demoLink:'propsDemo'}
+            ]
+        }
+    }
+}
+</script>
+<style scoped>
+.weui-cells{
+    margin: 0;
+}
+</style>
