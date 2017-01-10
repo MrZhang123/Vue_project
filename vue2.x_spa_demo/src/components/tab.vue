@@ -20,15 +20,13 @@
 <script>
 import tab_1 from './tab/tab_1';
 import tab_2 from './tab/tab_2';
-import tab_3 from './tab/tab_3';
 
 export default{
     data(){
         return{
             tabs:[
                 {name:'选项一'},
-                {name:'选项二'},
-                {name:'选项三'}
+                {name:'选项二'}
             ],
             currentView:'view_0',
             selected:0
@@ -36,8 +34,7 @@ export default{
     },
     components:{
         'view_0':tab_1,
-        'view_1':tab_2,
-        'view_2':tab_3
+        'view_1':tab_2
     },
     methods:{
         clickTab(index){

@@ -26,7 +26,7 @@ export default {
         return{
             tabbarNames:[
                 {name:'demo',tabLink:'tab'},
-                {name:'JS',tabLink:'JS'},
+                {name:'zhihu',tabLink:'zhihu'},
                 {name:'CSS',tabLink:'css'}
             ],
         }
