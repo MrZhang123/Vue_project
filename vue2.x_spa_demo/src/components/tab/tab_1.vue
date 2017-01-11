@@ -1,5 +1,5 @@
 <template>
-    <div class="tab tab-1">
+    <div class="tab-1">
         <div class="page__bd">
             <div class="weui-cells">
                 <router-link

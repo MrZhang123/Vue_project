@@ -1,5 +1,5 @@
 <template>
-    <div class="page tab">
+    <div class="tab">
         <div class="page__bd" style="height: 100%;">
             <div class="weui-tab">
                 <div class="weui-navbar">
