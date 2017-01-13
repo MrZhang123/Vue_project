@@ -21,7 +21,7 @@ export default{
     data(){
         return{
             demos:[
-                {demoName:'Props传递数据',demoLink:'propsDemo'}
+                {demoName:'组件的一些例子',demoLink:'componentDemo'}
             ]
         }
     }

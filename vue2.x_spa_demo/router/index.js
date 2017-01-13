@@ -6,7 +6,7 @@ Vue.use(VueRoter);
 import tab from '../src/components/tab.vue';
 import zhihu from '../src/components/zhihu.vue';
 
-import propsDemo from '../src/components/demo/propsDemo.vue';
+import componentDemo from '../src/components/demo/componentDemo.vue';
 
 export default new VueRoter({
     // mode: 'history',
@@ -16,7 +16,7 @@ export default new VueRoter({
         //路由重定向
         {path:'/',redirect:'/tab'},
         {path:'/tab',component:tab}, 
-        {path:'/propsDemo',component:propsDemo},
+        {path:'/componentDemo',component:componentDemo},
         {path:'/zhihu',component:zhihu}
     ]
 })
