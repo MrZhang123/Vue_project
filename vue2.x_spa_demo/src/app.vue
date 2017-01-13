@@ -1,10 +1,11 @@
 <template>
 <div class="page">
+    <transition name="fade" mode="out-in">
+        <router-view></router-view>
+    </transition>
     <div class="page__bd" style="height: 100%;">
         <div class="weui-tab">
-            <transition name="fade" mode="out-in">
-                <router-view></router-view>
-            </transition>
+            
             <div class="weui-tabbar"> 
                 <router-link 
                 v-for="(tabbarName,index) of tabbarNames"
