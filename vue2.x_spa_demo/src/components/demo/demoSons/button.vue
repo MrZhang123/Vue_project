@@ -1,10 +1,7 @@
 <template>
-    <div class="btn">
-        <a 
-        class="weui-btn weui-btn_primary" 
-        href="javascript:;"
-        @click="clickFun">点击了{{counter}}次</a>
-    </div>
+    <a 
+    href="javascript:;"
+    @click="sonFun">点击了{{counter}}次</a>
 </template>
 <script>
     export default{
@@ -14,9 +11,9 @@
             }
         },
         methods:{
-            clickFun(){
+            sonFun(){
+                this.$emit('sonFun');
                 return (this.counter)++;
-                this.$emit('clickFun');
             }
         }
     }
