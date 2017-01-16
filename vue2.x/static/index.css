@@ -1,8 +1,19 @@
+/*animate*/
 .fade-enter-active , .fade-leave-active{
     transition: opacity .5s
 }
 .fade-enter , .fade-leave-active{
     opacity: 0;
+}
+.fade-left-enter-active , .fade-left-leave-active{
+    transition: all 3s ease;
+}
+.fade-left-leave-active{
+    transform: translateX(-200px);
+    opacity: 0;
+}
+.fade-left-enter {
+    transform: translateX(200px);
 }
 .page{
     padding-bottom: 52px;

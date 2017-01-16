@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-2">
+    <div class="tab tab-2">
         <div class="page  article js_show">
             <div class="page__hd">
                 <h1 class="page__title">Article2</h1>

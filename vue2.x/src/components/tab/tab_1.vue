@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-1">
+    <div class="tab tab-1">
         <div class="page__bd">
             <div class="weui-cells">
                 <router-link
@@ -21,7 +21,8 @@ export default{
     data(){
         return{
             demos:[
-                {demoName:'组件的一些例子',demoLink:'componentDemo'}
+                {demoName:'组件',demoLink:'components'},
+                {demoName:'过渡效果',demoLink:'transitions'}
             ]
         }
     }

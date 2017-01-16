@@ -1,5 +1,5 @@
 <template>
-    <div class="tab">
+    <div class="tab-all">
         <div class="page__bd" style="height: 100%;">
             <div class="weui-tab">
                 <div class="weui-navbar">
@@ -9,7 +9,19 @@
                     :class="[index === selected ? 'weui-bar__item_on' : '' , 'weui-navbar__item' ]">{{tab.name}}</div>
                 </div>
                 <div class="weui-tab__panel">
-                    <transition name="fade" mode="out-in">
+                    <transition 
+                    name="fade-left" 
+                    model="out-in"
+                    @before-enter="beforeEnter"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+                    @enter-cancelled="enterCancelled"
+
+                    @before-leave="beforeLeave"
+                    @leave="leave"
+                    @after-leave="afterLeave"
+                    @leave-cancelled="leaveCancelled"
+                    >
                         <component :is="currentView"></component>
                     </transition>
                 </div>
@@ -40,10 +52,37 @@ export default{
         clickTab(index){
             this.selected = index;
             this.currentView = `view_${index}`;
+        },
+        /*测试事件发生顺序*/
+        beforeEnter(el){
+            console.log('beforeEnter');
+        },
+        enter(){
+            console.log('enter');
+        },
+        afterEnter(){
+            console.log('afterEnter');
+        },
+        enterCancelled(){
+            console.log('enterCancelled');
+        },
+        beforeLeave(){
+            console.log('beforeLeave');
+        },
+        leave(){
+            console.log('leave');
+        },
+        afterLeave(){
+            console.log('afterLeave');
+        },
+        leaveCancelled(){
+            console.log('leaveCancelled');
         }
     }
 }
 </script>
 <style scoped>
-    
+/*.tab{
+    transform: translateX(0);
+}*/
 </style>
