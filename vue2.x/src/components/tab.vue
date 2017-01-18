@@ -82,7 +82,13 @@ export default{
 }
 </script>
 <style scoped>
-/*.tab{
-    transform: translateX(0);
-}*/
+.weui-tab__panel{
+    position: relative;
+    height: 600px;
+}
+.tab{
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+}
 </style>

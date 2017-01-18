@@ -6,14 +6,15 @@
     opacity: 0;
 }
 .fade-left-enter-active , .fade-left-leave-active{
-    transition: all 3s ease;
+    transition: all .5s ease;
 }
 .fade-left-leave-active{
-    transform: translateX(-200px);
+    transform: translateX(-500px);
     opacity: 0;
 }
 .fade-left-enter {
-    transform: translateX(200px);
+    transform: translateX(500px);
+    opacity: 0;
 }
 .page{
     padding-bottom: 52px;
