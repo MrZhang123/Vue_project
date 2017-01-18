@@ -57,6 +57,7 @@ export default{
     },
     computed:{
         screenShowFont(){
+            console.log('test');
             switch(this.screenShow){
                 case 're' :
                     return 'red1';
