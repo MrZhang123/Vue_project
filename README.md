@@ -1,2 +1,2 @@
-# Learn Vue and Webpack Building Webapp Demo
+# Learn Vue and Webpack Building Webapp
 Those Vue demo writed in learning Vue process
