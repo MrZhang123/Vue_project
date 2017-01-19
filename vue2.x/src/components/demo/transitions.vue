@@ -22,11 +22,72 @@
             <h1 class="page__title">transition-group</h1>
             <p class="page__desc">过渡列表的展示</p>
         </div>
+        <div class="shuffle-box">
+            <transition-group
+            class="shuffle-ul"
+            name="shuffle"
+            tag="ul"
+            >
+                <li
+                class="shuffle-item"
+                v-for="item of shuffleArr"
+                :key="item.id"
+                >{{item.value}}</li>
+            </transition-group>
+        </div>
+        <a 
+        href="javascript:;" 
+        class="weui-btn weui-btn_primary"
+        @click="shuffleFun">shuffle</a>
     </div>
 </template>
+<style scoped>
+.button-sp-area{
+    text-align: center;
+}
+.shuffle-box,
+.screen-box{
+    position: relative;
+    width: 100%;
+    height: 150px;
+}
+.screen{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 100px;
+    border: 10px dashed #1aad19;
+    line-height: 100px;
+    text-align: center;
+    font-size: 40px;
+    color: #1aad19; 
+}
+.shuffle-box{
+    height: 376px;
+}
+.shuffle-ul{
+    text-align: center;
+}
+.shuffle-item{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    font-size: 26px;
+    padding: 20px;
+    text-align: center;
+    color: #1aad19;
+    border: 2px solid #1aad19;
+    margin-right: -2px;
+    margin-top: -2px;
+}
+.shuffle-move{
+    transition: all .5s ease;
+}
+</style>
 <script>
 import _ from 'lodash';
-
 export default{
     data(){
         return{
@@ -35,6 +96,24 @@ export default{
                 {btnName:'red',btnClass:'weui-btn weui-btn_mini weui-btn_warn'},
                 {btnName:'green',btnClass:'weui-btn weui-btn_mini weui-btn_primary'},
                 {btnName:'white',btnClass:'weui-btn weui-btn_mini weui-btn_default'}
+            ],
+            shuffleArr:[
+                {'id':0,'value':'a'},
+                {'id':1,'value':'b'},
+                {'id':2,'value':'c'},
+                {'id':3,'value':'d'},
+                {'id':4,'value':'e'},
+                {'id':5,'value':'f'},
+                {'id':6,'value':'g'},
+                {'id':7,'value':'h'},
+                {'id':8,'value':'i'},
+                {'id':9,'value':'j'},
+                {'id':10,'value':'k'},
+                {'id':11,'value':'l'},
+                {'id':12,'value':'m'},
+                {'id':13,'value':'n'},
+                {'id':14,'value':'o'},
+                {'id':15,'value':'p'}
             ]
         }
     },
@@ -53,6 +132,12 @@ export default{
                 default:
                     this.screenShow = 'em';
             }
+        },
+        shuffleFun(){
+            this.shuffleArr = _.shuffle(this.shuffleArr);
+        },
+        mounted(){
+            console.log(1)
         }
     },
     computed:{
@@ -74,26 +159,3 @@ export default{
     }
 }
 </script>
-<style scoped>
-.button-sp-area{
-    text-align: center;
-}
-.screen-box{
-    position: relative;
-    width: 100%;
-    height: 150px;
-}
-.screen{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 300px;
-    height: 100px;
-    border: 10px dashed #1aad19;
-    line-height: 100px;
-    text-align: center;
-    font-size: 40px;
-    color: #1aad19; 
-}
-</style>
