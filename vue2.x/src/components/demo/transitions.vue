@@ -37,8 +37,8 @@
         </div>
         <a 
         href="javascript:;" 
-        class="weui-btn weui-btn_primary"
-        @click="shuffleFun">shuffle</a>
+        :class="[flag ? 'weui-btn_primary' : 'weui-btn_warn' , 'weui-btn']"
+        @click="setIntervalStart">{{btnText}}</a>
     </div>
 </template>
 <style scoped>
@@ -114,9 +114,15 @@ export default{
                 {'id':13,'value':'n'},
                 {'id':14,'value':'o'},
                 {'id':15,'value':'p'}
-            ]
+            ],
+            flag:true,
+            btnText:'setIntervalStart',
+            interval:''
         }
     },
+    // mounted(){
+    //     setInterval(this.shuffleFun,500);
+    // },
     methods:{
         clickFun(index){
             switch(index){
@@ -136,8 +142,19 @@ export default{
         shuffleFun(){
             this.shuffleArr = _.shuffle(this.shuffleArr);
         },
-        mounted(){
-            console.log(1)
+        setIntervalStart(){
+            console.log(this.interval)
+            if(this.flag){
+                this.interval = setInterval(this.shuffleFun,500);
+                
+                this.flag = false;
+                this.btnText = 'setIntervalEnd';
+            }else{
+                console.log(this.interval)
+                clearInterval(this.interval);
+                this.flag = true;
+                this.btnText = 'setIntervalStart';
+            }
         }
     },
     computed:{
