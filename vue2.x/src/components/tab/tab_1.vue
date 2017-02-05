@@ -22,7 +22,8 @@ export default{
         return{
             demos:[
                 {demoName:'组件',demoLink:'components'},
-                {demoName:'过渡效果',demoLink:'transitions'}
+                {demoName:'过渡效果',demoLink:'transitions'},
+                {demoName:'axios的简单实用',demoLink:'axios-use'}
             ]
         }
     }
