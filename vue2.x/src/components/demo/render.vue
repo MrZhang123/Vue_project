@@ -10,17 +10,50 @@
     </div>
 </template>
 <script>
-function inputText(createElement){
+function weuiCellsTitle(createElement){
     return createElement('div',{
         attrs:{
-            'class':'test-class'
+            'class':'weui-cells__title'
         }
-    },'this is test!');
+    },'文本框');
 }
+
+function weuiInput(createElement){
+    return createElement('input',{
+        attrs:{
+            'class':'weui-input',
+            'placeholder':'请输入文本',
+            'type':'text',
+            'v-model':'test'
+        }
+    })
+}
+function weuiCellBd(createElement){
+    return createElement('div',{
+        attrs:{
+            'class':'weui-cell__bd'
+        }
+    },[weuiInput(createElement)]);
+}
+function weuiCell(createElement){
+    return createElement('div',{
+        attrs:{
+            'class':'weui-cell'
+        }
+    },[weuiCellBd(createElement)]);
+}
+function weuiCells(createElement){
+    return createElement('div',{
+        attrs:{
+            'class':'weui-cells'
+        }
+    },[weuiCell(createElement)]);
+}
+
 export default{
     data(){
         return{
-            
+            val:''
         }
     },
     components:{
@@ -30,7 +63,7 @@ export default{
                     attrs:{
                         'class':'parents'
                     }
-                },[inputText(createElement)])
+                },[weuiCellsTitle(createElement),weuiCells(createElement)]);
             }
         }
     }
