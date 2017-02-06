@@ -9,6 +9,7 @@ import zhihu from '../src/components/zhihu.vue';
 import componentsDemo from '../src/components/demo/components.vue';
 import transitionsDemo from '../src/components/demo/transitions.vue';
 import axiosUse from '../src/components/demo/axios-use.vue';
+import render from '../src/components/demo/render.vue';
 
 export default new VueRoter({
     // mode: 'history',
@@ -21,6 +22,7 @@ export default new VueRoter({
         {path:'/components',component:componentsDemo},
         {path:'/transitions',component:transitionsDemo},
         {path:'/axios-use',component:axiosUse},
+        {path:'/render',component:render},
         {path:'/zhihu',component:zhihu}
     ]
 })

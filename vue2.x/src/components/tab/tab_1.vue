@@ -23,7 +23,8 @@ export default{
             demos:[
                 {demoName:'组件',demoLink:'components'},
                 {demoName:'过渡效果',demoLink:'transitions'},
-                {demoName:'axios的简单实用',demoLink:'axios-use'}
+                {demoName:'axios的简单实用',demoLink:'axios-use'},
+                {demoName:'Render函数的使用',demoLink:'render'}
             ]
         }
     }

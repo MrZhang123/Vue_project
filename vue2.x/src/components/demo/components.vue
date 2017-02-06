@@ -57,7 +57,7 @@ export default{
         }
     },
     components:{
-        child:{
+        'child':{
             props:['inputMessage'],
             template:'<span>{{inputMessage}}</span>'
         },
