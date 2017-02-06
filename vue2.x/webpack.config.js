@@ -22,6 +22,8 @@ module.exports = {
           {
             loader: 'babel'
           }
+          //or
+          'babel'
         ],*/
         exclude: /node_modules/
       },
