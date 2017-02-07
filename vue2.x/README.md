@@ -1,4 +1,4 @@
-# Vue2.x Web App
+# Vue2.x SPA
 
 Use `Vue.js2.x` , `vue-router2` , `axios` etc<br/>
 The build setup uses webpack2.x and corresponding plugin.
