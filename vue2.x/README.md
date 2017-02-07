@@ -1,3 +1,18 @@
-# Learn Vue2.x and Webpack2.x Building Webapp Demo
-**This Demo base on the vue1.x and webpack1.x**<br/>
-Those Vue demo writed in learning Vue process
+# Vue2.x SPA Web App
+
+Use `Vue.js2.x` , `vue-router2` , `axios` etc<br/>
+The build setup uses webpack2.x and corresponding plugin.
+
+## Building 
+
+```shell
+# install:
+npm install
+
+# run dev-server:
+npm run dev
+# open the http://loaclhost:8080
+
+# build
+npm run build
+```
