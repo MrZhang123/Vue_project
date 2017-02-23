@@ -3,6 +3,9 @@ const extractTextPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
+  // entry: [
+  //   path.resolve(__dirname + '/src/main.js')
+  // ],
   entry:{
     app: './src/main.js',
     vendor: [
