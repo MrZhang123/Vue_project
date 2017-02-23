@@ -1,15 +1,21 @@
 const path = require('path');
-// const extractTextPlugin = require('extract-text-webpack-plugin');
-// const htmlWwebpackPlugin = require('html-webpack-plugin');
+const extractTextPlugin = require('extract-text-webpack-plugin');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
-  entry: [
-    path.resolve(__dirname + '/src/main.js')
-  ],
+  entry:{
+    app: './src/main.js',
+    vendor: [
+      'lodash',
+      'axios',
+      'vue',
+      'vue-router'
+    ]
+  },
   output: {
     path: path.resolve(__dirname + '/dist'),
     publicPath: '/dist',
-    filename: 'build.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -31,14 +37,14 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue',
-        // options: {
-        //   loaders:{
-        //     css: extractTextPlugin.extract({
-        //       loader: 'css-loader',
-        //       fallbackLoader: 'vue-style-loader'
-        //     })
-        //   }
-        // }
+        options: {
+          loaders:{
+            css: extractTextPlugin.extract({
+              loader: 'css-loader',
+              fallbackLoader: 'vue-style-loader'
+            })
+          }
+        }
       },
       //图片转化，小于8K自动转化为base64的编码
       {
@@ -56,13 +62,16 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    // new htmlWwebpackPlugin({
-    //   filename: 'assets/admin.html'
-    // }),
-    // new extractTextPlugin({
-    //   filename:'/style.css',
-    //   allChunks:true
-    // })
+    new webpack.optimize.CommonsChunkPlugin({
+      name:'vendor'
+    }),
+    new htmlWebpackPlugin({
+      filename: 'assets/admin.html'
+    }),
+    new extractTextPlugin({
+      filename:'/style.css',
+      allChunks:true
+    })
   ],
   resolveLoader: {
     moduleExtensions: ['-loader']
