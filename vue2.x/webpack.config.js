@@ -68,6 +68,11 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name:'vendor'
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
     new htmlWebpackPlugin({
       filename: 'assets/admin.html'
     }),
