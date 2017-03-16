@@ -7,7 +7,7 @@ module.exports = {
   //   path.resolve(__dirname + '/src/main.js')
   // ],
   entry:{
-    app: './src/main.js',
+    app: ['./src/main.js'],
     vendor: [
       'lodash',
       'axios',
