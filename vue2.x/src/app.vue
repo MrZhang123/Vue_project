@@ -42,9 +42,6 @@ export default {
 }
 </script>
 <style scoped>
-    body{
-        background-color:red;
-    }
     .weui-tabbar{
         position: fixed;
         left: 0;
@@ -62,7 +59,6 @@ export default {
     .weui-navbar__item,
     .weui-tabbar__item .weui-tabbar__label{
         font-size: 18px;
-        line-height:50px;
     }
     .router-link-active{
         background-color: #EAEAEA;
