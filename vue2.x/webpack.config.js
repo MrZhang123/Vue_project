@@ -3,22 +3,22 @@ const extractTextPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
-  // entry: [
-  //   path.resolve(__dirname + '/src/main.js')
-  // ],
-  entry:{
-    app: ['./src/main.js'],
-    vendor: [
-      'lodash',
-      'axios',
-      'vue',
-      'vue-router'
-    ]
-  },
+  entry: [
+    path.resolve(__dirname + '/src/main.js')
+  ],
+  // entry:{
+  //   app: ['./src/main.js'],
+  //   vendor: [
+  //     'lodash',
+  //     'axios',
+  //     'vue',
+  //     'vue-router'
+  //   ]
+  // },
   output: {
     path: path.resolve(__dirname + '/dist'),
     publicPath: '/dist',
-    filename: '[name].js'
+    filename: 'build.js'
   },
   module: {
     rules: [
@@ -65,9 +65,9 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name:'vendor'
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name:'vendor'
+    // }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false

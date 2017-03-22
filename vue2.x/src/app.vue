@@ -1,11 +1,13 @@
 <template>
 <div class="page">
-    <transition name="fade" mode="out-in">
-        <router-view></router-view>
-    </transition>
     <div class="page__bd" style="height: 100%;">
+        
         <div class="weui-tab">
-            
+            <div class="weui-tab__panel">
+                <transition name="fade" mode="out-in">
+                    <router-view></router-view>
+                </transition>
+            </div>
             <div class="weui-tabbar"> 
                 <router-link 
                 v-for="(tabbarName,index) of tabbarNames"
@@ -40,6 +42,9 @@ export default {
 }
 </script>
 <style scoped>
+    body{
+        background-color:red;
+    }
     .weui-tabbar{
         position: fixed;
         left: 0;
@@ -57,6 +62,7 @@ export default {
     .weui-navbar__item,
     .weui-tabbar__item .weui-tabbar__label{
         font-size: 18px;
+        line-height:50px;
     }
     .router-link-active{
         background-color: #EAEAEA;
