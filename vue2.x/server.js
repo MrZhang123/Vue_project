@@ -2,7 +2,7 @@ const config = require('./webpack.config.js');
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 
-config.entry.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+config.entry.unshift("webpack-dev-server/client?http://localhost:4200/", "webpack/hot/dev-server");
 
 const compiler = webpack(config);
 
@@ -13,6 +13,6 @@ const server = new webpackDevServer(compiler,{
     publicPath:config.output.publicPath
 });
 
-server.listen(8080,'localhost',()=>{
-    console.log('server started at localhost:8080');
+server.listen(4200,'localhost',()=>{
+    console.log('server started at localhost:4200');
 });

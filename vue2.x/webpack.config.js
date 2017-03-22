@@ -25,7 +25,7 @@ module.exports = {
       //转化ES6语法
       {
         test: /\.js$/,
-        loader: 'babel',
+        use: 'babel',
         /*以上为简写
         use: [
           {
@@ -41,12 +41,10 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue',
         options: {
-          loaders:{
-            css: extractTextPlugin.extract({
+          css: extractTextPlugin.extract({
               loader: 'css-loader',
-              fallbackLoader: 'vue-style-loader'
+              fallback: 'vue-style-loader'
             })
-          }
         }
       },
       //图片转化，小于8K自动转化为base64的编码
