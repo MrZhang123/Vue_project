@@ -15,7 +15,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname + '/dist'),
         publicPath: '/dist',
-        filename: '[name].js'
+        filename: '[name].[hash].js'
     },
     module: {
         rules: [
@@ -38,10 +38,13 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue',
                 options: {
-                    css: extractTextPlugin.extract({
-                        fallback: 'vue-style-loader',
-                        use: 'css-loader'
-                    })
+                    loaders:{
+                        css: extractTextPlugin.extract({
+                            fallback: 'vue-style-loader',
+                            use: 'css-loader',
+                            publicPath:'../'
+                        })
+                    }
                 }
             },
             //图片转化，小于8K自动转化为base64的编码
@@ -69,10 +72,11 @@ module.exports = {
             }
         }),
         new extractTextPlugin({
-            filename: 'style.css',
+            filename: 'style.[hash].css',
             allChunks: true
         }),
         new htmlWebpackPlugin({
+            title:'SPA',
             filename: 'assets/index.html'
         })
     ],
