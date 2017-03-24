@@ -2,6 +2,7 @@ const path = require('path');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+console.log(htmlWebpackPlugin)
 module.exports = {
     entry: {
         app: ['./src/main.js'],
@@ -41,8 +42,7 @@ module.exports = {
                     loaders:{
                         css: extractTextPlugin.extract({
                             fallback: 'vue-style-loader',
-                            use: 'css-loader',
-                            publicPath:'../'
+                            use: 'css-loader'
                         })
                     }
                 }
