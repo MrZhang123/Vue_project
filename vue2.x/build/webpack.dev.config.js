@@ -1,6 +1,7 @@
 const path = require('path');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
     entry: {
@@ -53,6 +54,7 @@ module.exports = {
         hints: false
     },
     plugins: [
+        new FriendlyErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor'
