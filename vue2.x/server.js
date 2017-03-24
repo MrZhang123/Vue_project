@@ -1,4 +1,4 @@
-const config = require('./webpack.dev.config.js');
+const config = require('./build/webpack.dev.config.js');
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 
@@ -14,5 +14,5 @@ const server = new webpackDevServer(compiler,{
 });
 
 server.listen(4200,'localhost',()=>{
-    console.log('server started at localhost:4200');
+    console.log(`server started at localhost:4200 , please open localhost:4200/src`);
 });
