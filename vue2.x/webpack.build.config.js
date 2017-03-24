@@ -77,8 +77,8 @@ module.exports = {
         }),
         new htmlWebpackPlugin({
             title:'SPA',
-            filename: 'assets/index.html',
-            inject:'body'
+            template:'index.html',
+            filename: 'index_bundle.html'
         })
     ],
     resolveLoader: {
