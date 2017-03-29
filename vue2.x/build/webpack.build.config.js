@@ -61,6 +61,13 @@ module.exports = {
     performance: {
         hints: false
     },
+    stats: {
+        maxModules: 0,
+        // chunks:false,
+        // modules: false,
+        // chunkModules: false,
+        children: false
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
