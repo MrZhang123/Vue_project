@@ -84,7 +84,7 @@ module.exports = {
         }),
         new htmlWebpackPlugin({
             title:'SPA',
-            template:'dev/index.template.html',
+            template:'template/index.template.html',
             filename: 'index_bundle.html'
         })
     ],
